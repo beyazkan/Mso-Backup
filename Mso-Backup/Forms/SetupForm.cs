@@ -14,6 +14,7 @@ namespace Mso_Backup.Forms
 {
     public partial class SetupForm : Form
     {
+        // Loglama Nesnesi
         Logger logger = LogManager.GetCurrentClassLogger();
 
         public List<UserControl> userControls;
