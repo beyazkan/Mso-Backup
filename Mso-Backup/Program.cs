@@ -19,7 +19,7 @@ namespace Mso_Backup
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (File.Exists(Application.StartupPath + "\\msobackup.db3")){
+            if (File.Exists(Application.StartupPath + "\\msobackup.db")){
                 Application.Run(new DriversForm());
             }
             else

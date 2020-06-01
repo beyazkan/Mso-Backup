@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using NLog;
 
 namespace Mso_Backup
 {
     class FileManagement
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
 
         String Kaynak_Yol = "D:\\Video";
         String Hedef_Yol = "E:\\Video";
-
 
         public bool FileExist(string path)
         {
@@ -97,7 +98,7 @@ namespace Mso_Backup
             }
         }
 
-        public void GetFiles()
+        public void GetFilesx()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Kaynak_Yol);
             FileInfo[] fileInfos = directoryInfo.GetFiles("*", SearchOption.AllDirectories);
@@ -107,6 +108,14 @@ namespace Mso_Backup
                 GetFileInformation(fileInfo);
                 Console.ReadLine();
             }
+        }
+
+        public List<FileInfo> GetFiles(string sourcePath)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
+            List<FileInfo> fileInfos = directoryInfo.GetFiles("*", SearchOption.AllDirectories).ToList<FileInfo>();
+
+            return fileInfos;
         }
 
         public void KlasorBilgileri()
@@ -145,6 +154,24 @@ namespace Mso_Backup
             Console.WriteLine("Dosyanın Hash Kodu : " + fileInfo.GetHashCode());
         }
 
+        public void AllCopyFile(string sourcePath, string destinationPath)
+        {
+            try
+            {
+                List<FileInfo> files = GetFiles(sourcePath);
+                foreach (var file in files)
+                {
+                    FileCopy(file.FullName, destinationPath + "\\" + file.Name);
+                    logger.Info("{0} adlı dosya başarılı bir şekilde kopyalandı.", file.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+            
+        }
+
         public void FileCopy(string kaynak, string hedef)
         {
             byte[] buffer = new byte[1048576];
@@ -176,8 +203,11 @@ namespace Mso_Backup
                                 //Set progress bar value to percentage of file been copied.
                                 //pBar1.Value = (int)present;
                                 Console.WriteLine("Kopyalama Durumu : {0}", (int)present);
+                                logger.Info("Kopyalama Durumu : {0}", (int)present);
                             }
-                            catch { }
+                            catch (Exception e){
+                                logger.Error(e.Message);
+                            }
                         }
                         //Write data to the output file.
                         fo.Write(buffer, 0, block_size);

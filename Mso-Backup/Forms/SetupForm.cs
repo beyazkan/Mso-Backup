@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Mso_Backup.Forms
     {
         // Loglama Nesnesi
         Logger logger = LogManager.GetCurrentClassLogger();
+        FileManagement fileManagement = new FileManagement();
+        public string destinationPath;
 
         public List<UserControl> userControls;
         public int _step { get; set; }
@@ -89,6 +92,30 @@ namespace Mso_Backup.Forms
             {
                 logger.Error(e.Message);
             }
+        }
+
+        public void InstallScript()
+        {
+            InstallToDestination();
+        }
+        public void InstallToDestination()
+        {
+            if (!fileManagement.FolderExist(destinationPath))
+            {
+                Directory.CreateDirectory(destinationPath);
+                logger.Info("Kurulum için belirtilen '{0}' hedef yol oluşturuldu.", destinationPath);
+            }
+            else
+            {
+                logger.Warn("Kurulum için belirtilen '{0}' hedef yol zaten mevcut...", destinationPath);
+            }
+            List<FileInfo> fileInfos = fileManagement.GetFiles(Application.StartupPath);
+            foreach (var item in fileInfos)
+            {
+                fileManagement.GetFileInformation(item);
+            }
+            //fileManagement.AllCopyFile(Application.StartupPath, destinationPath);
+            MessageBox.Show("Aktarma işlemi tamamlandı.");
         }
     }
 }
