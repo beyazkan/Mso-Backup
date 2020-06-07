@@ -30,8 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -52,32 +51,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Masaüstününde ki kısayolla yazılımı çalıştırabilirsiniz.";
             // 
-            // button1
+            // btnEnd
             // 
-            this.button1.Location = new System.Drawing.Point(185, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Son";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(15, 62);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 3;
-            this.btnBack.Text = "Geri";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnEnd.Location = new System.Drawing.Point(99, 59);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(75, 23);
+            this.btnEnd.TabIndex = 2;
+            this.btnEnd.Text = "Son";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
             // FinishUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FinishUC";
@@ -91,7 +79,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnEnd;
     }
 }

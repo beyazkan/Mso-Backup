@@ -134,6 +134,12 @@
     <Compile Include="Forms\Setup\EmailUC.Designer.cs">
       <DependentUpon>EmailUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Setup\FailedUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setup\FailedUC.Designer.cs">
+      <DependentUpon>FailedUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Setup\FinishUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="Forms\Setup\InstallUC.Designer.cs">
       <DependentUpon>InstallUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setup\LoadingUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setup\LoadingUC.Designer.cs">
+      <DependentUpon>LoadingUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Setup\LoggerUC.cs">
       <SubType>UserControl</SubType>
@@ -167,9 +179,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shortcut.cs" />
     <Content Include="Resources\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\icons8-cancel-40.png" />
     <EmbeddedResource Include="Forms\DriversForm.resx">
       <DependentUpon>DriversForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,11 +205,17 @@
     <EmbeddedResource Include="Forms\Setup\EmailUC.resx">
       <DependentUpon>EmailUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setup\FailedUC.resx">
+      <DependentUpon>FailedUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setup\FinishUC.resx">
       <DependentUpon>FinishUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setup\InstallUC.resx">
       <DependentUpon>InstallUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setup\LoadingUC.resx">
+      <DependentUpon>LoadingUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setup\LoggerUC.resx">
       <DependentUpon>LoggerUC.cs</DependentUpon>
@@ -247,6 +267,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LoadingScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

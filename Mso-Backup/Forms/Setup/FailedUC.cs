@@ -10,18 +10,15 @@ using System.Windows.Forms;
 
 namespace Mso_Backup.Forms.Setup
 {
-    public partial class FinishUC : UserControl
+    public partial class FailedUC : UserControl
     {
-        SetupForm _parent;
-        public FinishUC(SetupForm parent)
+        public FailedUC()
         {
             InitializeComponent();
-            _parent = parent;
         }
 
-        private void btnEnd_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            _parent.InstallScript();
             Application.Exit();
         }
     }

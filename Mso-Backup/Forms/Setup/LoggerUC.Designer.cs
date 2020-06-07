@@ -157,7 +157,7 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 1;
-            this.btnNext.Text = "İleri";
+            this.btnNext.Text = "Kur";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -171,14 +171,14 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // loggerUC
+            // LoggerUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.groupBox1);
-            this.Name = "loggerUC";
+            this.Name = "LoggerUC";
             this.Size = new System.Drawing.Size(288, 226);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

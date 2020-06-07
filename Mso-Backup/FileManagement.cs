@@ -292,5 +292,35 @@ namespace Mso_Backup
             }
 
         }
+        public void DeleteFilesAndFolder(string folderPath)
+        {
+            DirectoryInfo directory = new DirectoryInfo(folderPath);
+
+            foreach (FileInfo file in directory.GetFiles())
+            {
+                try
+                {
+                    file.Delete();
+                    logger.Info("{0} adlı dosya başarılı bir şekilde silindi.", file.Name);
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e.Message);
+                }
+            }
+
+            foreach (DirectoryInfo directoryInfo in directory.GetDirectories())
+            {
+                try
+                {
+                    directoryInfo.Delete(true);
+                    logger.Info("{0} adlı klasör başarılı bir şekilde silindi.", directoryInfo.Name);
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e.Message);
+                }
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace Mso_Backup.Forms
                 userControls.Add(new UserUC(this));
                 userControls.Add(new EmailUC(this));
                 userControls.Add(new LoggerUC(this));
+                userControls.Add(new LoadingUC(this));
                 userControls.Add(new FinishUC(this));
                 logger.Info("UserControl Listesi Oluşturuldu.");
                 //string[] sayi = { "1", "2", "3", "4", "5" };
@@ -97,6 +98,11 @@ namespace Mso_Backup.Forms
         public void InstallScript()
         {
             InstallToDestination();
+            logger.Info("Program belirtilen dizine koplayandı.");
+            Shortcut.CreateShortcut(destinationPath + "\\Mso-Backup.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            logger.Info("Programın kısayolu, Kullanıcının masaüstü klasörüne oluşturuldu.");
+            Shortcut.CreateStartupShortcut(destinationPath + "\\Mso-Backup.exe");
+            logger.Info("Windows başlangıcında çalıştırılması için gerekli kısayol oluşturuldu.");
         }
         public void InstallToDestination()
         {
