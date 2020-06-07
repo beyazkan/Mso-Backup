@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DriversForm));
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.DepolamaCihazlariBtn = new System.Windows.Forms.Button();
             this.OnlineBtn = new System.Windows.Forms.Button();
@@ -126,7 +127,7 @@
             this.lblFreeSpaceText.TabIndex = 0;
             this.lblFreeSpaceText.Text = "Boş Alan :";
             // 
-            // Form1
+            // DriversForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,7 +137,8 @@
             this.Controls.Add(this.OnlineBtn);
             this.Controls.Add(this.DepolamaCihazlariBtn);
             this.Controls.Add(this.checkedListBox1);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "DriversForm";
             this.Text = "Depolama Cihazları";
             this.gbxDiskBilgileri.ResumeLayout(false);
             this.gbxDiskBilgileri.PerformLayout();
