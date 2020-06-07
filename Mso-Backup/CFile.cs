@@ -15,6 +15,7 @@ namespace Mso_Backup
         public string Hashcode { get; set; }
         public string Attributes { get; set; }
         public string DirectoryName { get; set; }
+        public string OnlyDirectoryName { get { return DirectoryName.Split('\\').ToList<string>().Last(); } set { } }
         public string ParentFolder { get; set; }
         public string CreationTime { get; set; }
         public string LastWriteTime { get; set; }

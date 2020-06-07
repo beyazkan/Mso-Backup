@@ -12,9 +12,6 @@ namespace Mso_Backup
     {
         Logger logger = LogManager.GetCurrentClassLogger();
 
-        String Kaynak_Yol = "D:\\Video";
-        String Hedef_Yol = "E:\\Video";
-
         public bool FileExist(string path)
         {
             if (File.Exists(path))
@@ -26,7 +23,6 @@ namespace Mso_Backup
                 return false;
             }
         }
-
         public bool FolderExist(string path)
         {
             if (Directory.Exists(path))
@@ -38,78 +34,58 @@ namespace Mso_Backup
                 return false;
             }
         }
-
-        public void KlasorListeleme()
+        public bool HasSubFolder(string sourcepath)
         {
-            string[] klasorler = Directory.GetDirectories(Kaynak_Yol);
-
-            if (klasorler.Length == 0)
+            if (GetDirectoryInfos(sourcepath).Count > 0)
             {
-                Console.WriteLine("Belirtilen dizinde herhangi bir klasör mevcut değildir.");
+                return true;
             }
             else
             {
-                foreach (string klasor in klasorler)
-                {
-                    Console.WriteLine(klasor);
-                }
+                return false;
             }
         }
-
-        public void DosyaListeleme(string path)
+        public bool HasFiles(string sourcepath)
         {
-            string[] dosyalar = Directory.GetFiles(path);
-
-            if (dosyalar.Length == 0)
+            if (ListofFiles(sourcepath).Count > 0)
             {
-                Console.WriteLine($"{path} : Belirtilen dizinde herhangi bir dosya mevcut değildir.");
+                return true;
             }
             else
             {
-                foreach (string dosya in dosyalar)
-                {
-                    Console.WriteLine(dosya);
-                }
+                return false;
             }
-
         }
-
-        public string[] ListofDirectory(string path)
+        public string[] ListofDirectory(string sourcePath)
         {
-            string[] directories = Directory.GetDirectories(Kaynak_Yol);
+            string[] directories = Directory.GetDirectories(sourcePath);
             return directories;
         }
-
-        public void TumDosyalariListele()
+        public List<FileInfo> ListofFiles(string sourcePath, bool bSearchOption = false)
         {
-            string[] klasorler = ListofDirectory(Kaynak_Yol);
-            if (klasorler.Length != 0)
-            {
-                foreach (var klasor in klasorler)
-                {
-                    DosyaListeleme(klasor);
-                }
 
-                DosyaListeleme(Kaynak_Yol);
+            List<string> filepath = new List<string>();
+            List<FileInfo> files = new List<FileInfo>();
+            DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
+            if (bSearchOption)
+            {
+                FileInfo[] fileInfos = directoryInfo.GetFiles("*", SearchOption.AllDirectories);
+                foreach (var fileInfo in fileInfos)
+                {
+                    files.Add(fileInfo);
+                }
             }
             else
             {
-                DosyaListeleme(Kaynak_Yol);
+                FileInfo[] fileInfos = directoryInfo.GetFiles("*", SearchOption.TopDirectoryOnly);
+                foreach (var fileInfo in fileInfos)
+                {
+                    files.Add(fileInfo);
+                }
             }
+
+            return files;
         }
-
-        public void GetFilesx()
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(Kaynak_Yol);
-            FileInfo[] fileInfos = directoryInfo.GetFiles("*", SearchOption.AllDirectories);
-
-            foreach (var fileInfo in fileInfos)
-            {
-                GetFileInformation(fileInfo);
-                Console.ReadLine();
-            }
-        }
-
         public List<FileInfo> GetFiles(string sourcePath)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
@@ -117,8 +93,7 @@ namespace Mso_Backup
 
             return fileInfos;
         }
-
-        public void KlasorBilgileri()
+        public void FolderInformation()
         {
             try
             {
@@ -138,8 +113,7 @@ namespace Mso_Backup
                 Console.WriteLine(e.Message);
             }
         }
-
-        public void GetFileInformation(FileInfo fileInfo)
+        public void FileInformation(FileInfo fileInfo)
         {
             Console.WriteLine("Dosya Adı : " + fileInfo.Name);
             Console.WriteLine("Dosya Yolu : " + fileInfo.FullName);
@@ -153,7 +127,6 @@ namespace Mso_Backup
             Console.WriteLine("Dosyanın Ebeveyni : " + fileInfo.Directory);
             Console.WriteLine("Dosyanın Hash Kodu : " + fileInfo.GetHashCode());
         }
-
         public void AllCopyFile(string sourcePath, string destinationPath)
         {
             try
@@ -171,7 +144,6 @@ namespace Mso_Backup
             }
             
         }
-
         public void FileCopy(string kaynak, string hedef)
         {
             byte[] buffer = new byte[1048576];
@@ -219,10 +191,106 @@ namespace Mso_Backup
                 fi.Close();
             }
         }
-
-        public void FileCopyTest()
+        public List<DirectoryInfo> GetDirectoryInfos(string sourcePath)
         {
-            FileCopy(Kaynak_Yol + "\\360 (2).mp4", Hedef_Yol + "\\360 (2).mp4");
+            DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
+            List<DirectoryInfo> directories = new List<DirectoryInfo>();
+
+
+            directories = directoryInfo.GetDirectories().ToList<DirectoryInfo>();
+
+            return directories;
+        }
+        public void ListofDirectories(List<DirectoryInfo> directories)
+        {
+            foreach (var directory in directories)
+            {
+                Console.WriteLine("Klasör Yolu: {0}", directory.FullName);
+                Console.WriteLine("Klasör Adı: {0}", directory.Name);
+                Console.WriteLine("Klasör Ebeveyni: {0}", directory.Parent);
+            }
+        }
+        public void CreateDirectory(string destinationPath)
+        {
+            Directory.CreateDirectory(destinationPath);
+        }
+        public List<string> GetSourcePaths(string sourcePath)
+        {
+            List<string> sourcePaths = new List<string>();
+            List<DirectoryInfo> directoryInfos = GetDirectoryInfos(sourcePath);
+            foreach (var directory in directoryInfos)
+            {
+                sourcePaths.Add(sourcePath + "\\" + directory.Name);
+            }
+
+            return sourcePaths;
+        }
+        public List<string> GetDestinationPaths(string sourcePath, string destinationPath)
+        {
+            List<string> destinationPaths = new List<string>();
+            List<DirectoryInfo> directoryInfos = GetDirectoryInfos(sourcePath);
+
+            foreach (var directory in directoryInfos)
+            {
+                destinationPaths.Add(destinationPath + "\\" + directory.Name);
+            }
+
+            return destinationPaths;
+        }
+        public string GetDestinationPath(string sourcePath, string destinationPath)
+        {
+            string folderPath;
+            DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
+            folderPath = destinationPath + "\\" + directoryInfo.Name;
+
+            return folderPath;
+        }
+        public void AllCopyFileWithFolder(string sourcePath, string destinationPath)
+        {
+            try
+            {
+                if (HasFiles(sourcePath))
+                {
+                    if (!FolderExist(destinationPath))
+                        CreateDirectory(destinationPath);
+                    else
+                        Console.WriteLine("Klasör zaten mevcut: {0}", destinationPath);
+
+                    List<FileInfo> files = ListofFiles(sourcePath);
+                    foreach (var file in files)
+                    {
+                        FileCopy(file.FullName, destinationPath + "\\" + file.Name);
+                    }
+
+                    if (HasSubFolder(sourcePath))
+                    {
+                        List<string> sourcepaths = GetSourcePaths(sourcePath);
+                        List<string> destinatinonpaths = GetDestinationPaths(sourcePath, destinationPath);
+
+                        foreach (var destenationFolder in destinatinonpaths)
+                        {
+                            if (!FolderExist(destenationFolder))
+                                CreateDirectory(destenationFolder);
+                            else
+                                Console.WriteLine("Klasör zaten mevcut: {0}", destenationFolder);
+                        }
+                        foreach (var source in sourcepaths)
+                        {
+                            string folderPath = GetDestinationPath(source, destinationPath);
+                            List<FileInfo> filex = ListofFiles(source);
+                            foreach (var file in filex)
+                            {
+                                FileCopy(file.FullName, folderPath + "\\" + file.Name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+
         }
     }
 }

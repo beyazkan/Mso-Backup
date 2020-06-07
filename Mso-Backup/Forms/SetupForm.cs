@@ -32,13 +32,13 @@ namespace Mso_Backup.Forms
                 // Nesne ve Değişken Tanımları
                 _step = 0;
                 userControls = new List<UserControl>();
-                logger.Info("UserControl Listesi Oluşturuldu.");
                 userControls.Add(new InstallUC(this));
                 userControls.Add(new DestinationUC(this));
                 userControls.Add(new UserUC(this));
                 userControls.Add(new EmailUC(this));
                 userControls.Add(new LoggerUC(this));
                 userControls.Add(new FinishUC(this));
+                logger.Info("UserControl Listesi Oluşturuldu.");
                 //string[] sayi = { "1", "2", "3", "4", "5" };
                 //MessageBox.Show(sayi[10]);
                 this.Controls.Add(userControls[_step]);
@@ -100,22 +100,25 @@ namespace Mso_Backup.Forms
         }
         public void InstallToDestination()
         {
+            // Hedef Adresi Oluşturma
             if (!fileManagement.FolderExist(destinationPath))
             {
-                Directory.CreateDirectory(destinationPath);
+                fileManagement.CreateDirectory(destinationPath);
                 logger.Info("Kurulum için belirtilen '{0}' hedef yol oluşturuldu.", destinationPath);
             }
             else
             {
                 logger.Warn("Kurulum için belirtilen '{0}' hedef yol zaten mevcut...", destinationPath);
             }
+
+            // Program dosyalarını Kopyalama
             List<FileInfo> fileInfos = fileManagement.GetFiles(Application.StartupPath);
+
             foreach (var item in fileInfos)
             {
-                fileManagement.GetFileInformation(item);
+                fileManagement.FileInformation(item);
             }
-            //fileManagement.AllCopyFile(Application.StartupPath, destinationPath);
-            MessageBox.Show("Aktarma işlemi tamamlandı.");
+            fileManagement.AllCopyFileWithFolder(Application.StartupPath, destinationPath);
         }
     }
 }
