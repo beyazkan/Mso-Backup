@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
+using System.IO;
+using System.Threading;
 
 namespace Mso_Backup.Forms.Setup
 {
@@ -14,19 +17,21 @@ namespace Mso_Backup.Forms.Setup
     {
         SetupForm _parent;
         int percent;
-        int minimum;
-        int maximum;
+        //int minimum;
+        //int maximum;
         string labelPercent;
-        string fileFullName;
+        //string fileFullName;
+        FileManagement fileManagement = new FileManagement();
+        Logger logger = LogManager.GetCurrentClassLogger();
 
         public LoadingUC(SetupForm parent)
         {
             InitializeComponent();
             percent = 0;
-            minimum = 0;
-            maximum = 100;
+            //minimum = 0;
+            //maximum = 100;
             labelPercent = "{0}%";
-            _parent = parent;
+            _parent = parent;            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -40,10 +45,48 @@ namespace Mso_Backup.Forms.Setup
             }
         }
 
-        private void changePercent()
+        public void changePercent(int value, string fileFullName)
         {
-            
+            //percent = value * 100 / total;
+            progressBar1.Value = value;
+            percentInfo.Text = string.Format(labelPercent, percent);
+            fileName.Text = fileFullName;
+            //if(percent >= 100)
+            //{
+            //    _parent.NextStep();
+            //}
+        }
 
+        public void Install()
+        {
+            // Hedef Adresi Oluşturma
+            if (!fileManagement.FolderExist(_parent.destinationPath))
+            {
+                fileManagement.CreateDirectory(_parent.destinationPath);
+                logger.Info("Kurulum için belirtilen '{0}' hedef yol oluşturuldu.", _parent.destinationPath);
+            }
+            else
+            {
+                logger.Warn("Kurulum için belirtilen '{0}' hedef yol zaten mevcut...", _parent.destinationPath);
+            }
+
+            // Program dosyalarını Kopyalama
+            List<FileInfo> fileInfos = fileManagement.GetFiles(Application.StartupPath);
+
+            foreach (var item in fileInfos)
+            {
+                fileManagement.FileInformation(item);
+            }
+            fileManagement.AllCopyForProgressBar(Application.StartupPath, _parent.destinationPath, this);
+        }
+
+        private void LoadingUC_Load(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ThreadStart(Install));
+            thread.Start();
+            percentInfo.Text = string.Format(labelPercent, 100);
+            Thread.Sleep(3000);
+            _parent.NextStep();
 
         }
     }

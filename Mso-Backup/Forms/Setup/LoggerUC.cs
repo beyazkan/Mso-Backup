@@ -22,6 +22,7 @@ namespace Mso_Backup.Forms.Setup
         private void btnNext_Click(object sender, EventArgs e)
         {
             _parent.NextStep();
+            _parent.InstallScript();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

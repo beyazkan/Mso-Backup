@@ -19,6 +19,7 @@ namespace Mso_Backup.Forms
         Logger logger = LogManager.GetCurrentClassLogger();
         FileManagement fileManagement = new FileManagement();
         public string destinationPath;
+        public bool alwaysStartup;
 
         public List<UserControl> userControls;
         public int _step { get; set; }
@@ -37,7 +38,7 @@ namespace Mso_Backup.Forms
                 userControls.Add(new UserUC(this));
                 userControls.Add(new EmailUC(this));
                 userControls.Add(new LoggerUC(this));
-                userControls.Add(new LoadingUC(this));
+                //userControls.Add(new LoadingUC(this));
                 userControls.Add(new FinishUC(this));
                 logger.Info("UserControl Listesi Oluşturuldu.");
                 //string[] sayi = { "1", "2", "3", "4", "5" };
@@ -48,9 +49,9 @@ namespace Mso_Backup.Forms
             {
                 logger.Error(e.Message);
             }
-            
-            
-        }
+
+
+}
 
         public void NextStep()
         {
@@ -99,11 +100,20 @@ namespace Mso_Backup.Forms
         {
             InstallToDestination();
             logger.Info("Program belirtilen dizine koplayandı.");
+            Shortcuts();
+        }
+
+        private void Shortcuts()
+        {
             Shortcut.CreateShortcut(destinationPath + "\\Mso-Backup.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
             logger.Info("Programın kısayolu, Kullanıcının masaüstü klasörüne oluşturuldu.");
-            Shortcut.CreateStartupShortcut(destinationPath + "\\Mso-Backup.exe");
-            logger.Info("Windows başlangıcında çalıştırılması için gerekli kısayol oluşturuldu.");
+            if (alwaysStartup)
+            {
+                Shortcut.CreateStartupShortcut(destinationPath + "\\Mso-Backup.exe");
+                logger.Info("Windows başlangıcında çalıştırılması için gerekli kısayol oluşturuldu.");
+            }
         }
+
         public void InstallToDestination()
         {
             // Hedef Adresi Oluşturma

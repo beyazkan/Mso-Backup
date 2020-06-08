@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using NLog;
+using Mso_Backup.Forms.Setup;
+using System.Threading;
 
 namespace Mso_Backup
 {
@@ -191,6 +193,55 @@ namespace Mso_Backup
                 fi.Close();
             }
         }
+        public void FileCopy(string kaynak, string hedef, int total, LoadingUC _parent)
+        {
+            byte[] buffer = new byte[1048576];
+
+            //Open source file for reading.
+            using (FileStream fi = new FileStream(kaynak, FileMode.Open, FileAccess.Read))
+            {
+                //Get length of source file.
+                long FileLen = fi.Length;
+                //Open output file for writing
+                using (FileStream fo = new FileStream(hedef, FileMode.Create, FileAccess.Write))
+                {
+
+                    int block_size = 0;
+                    long total_bytes = 0;
+
+                    //While we still have data read the file.
+                    while ((block_size = fi.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        //Append block size to total bytes
+                        total_bytes += block_size;
+                        //Work out what present age the file is been copied.
+                        double present = (double)total_bytes * 100 / FileLen;
+                        //progress bar fails if value is zero. 
+                        if (present > 0)
+                        {
+                            try
+                            {
+                                //Set progress bar value to percentage of file been copied.
+                                //pBar1.Value = (int)present;
+                                //Console.WriteLine("Kopyalama Durumu : {0}", (int)present);
+                                //logger.Info("Kopyalama Durumu : {0}", (int)present);
+                                _parent.changePercent((int)present, kaynak);
+                            }
+                            catch (Exception e)
+                            {
+                                logger.Error(e.Message);
+                            }
+                        }
+                        //Write data to the output file.
+                        fo.Write(buffer, 0, block_size);
+                    }
+                    //Close output file.
+                    fo.Close();
+                }
+                //Close source file.
+                fi.Close();
+            }
+        }
         public List<DirectoryInfo> GetDirectoryInfos(string sourcePath)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(sourcePath);
@@ -281,6 +332,55 @@ namespace Mso_Backup
                             foreach (var file in filex)
                             {
                                 FileCopy(file.FullName, folderPath + "\\" + file.Name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+
+        }
+        public void AllCopyForProgressBar(string sourcePath, string destinationPath, LoadingUC _parent)
+        {
+            try
+            {
+                if (HasFiles(sourcePath))
+                {
+                    int totalFile = ListofFiles(sourcePath, true).Count;
+
+                    if (!FolderExist(destinationPath))
+                        CreateDirectory(destinationPath);
+                    else
+                        Console.WriteLine("Klasör zaten mevcut: {0}", destinationPath);
+
+                    List<FileInfo> files = ListofFiles(sourcePath);
+                    foreach (var file in files)
+                    {
+                        FileCopy(file.FullName, destinationPath + "\\" + file.Name, totalFile, _parent);
+                    }
+
+                    if (HasSubFolder(sourcePath))
+                    {
+                        List<string> sourcepaths = GetSourcePaths(sourcePath);
+                        List<string> destinatinonpaths = GetDestinationPaths(sourcePath, destinationPath);
+
+                        foreach (var destenationFolder in destinatinonpaths)
+                        {
+                            if (!FolderExist(destenationFolder))
+                                CreateDirectory(destenationFolder);
+                            else
+                                Console.WriteLine("Klasör zaten mevcut: {0}", destenationFolder);
+                        }
+                        foreach (var source in sourcepaths)
+                        {
+                            string folderPath = GetDestinationPath(source, destinationPath);
+                            List<FileInfo> filex = ListofFiles(source);
+                            foreach (var file in filex)
+                            {
+                                FileCopy(file.FullName, folderPath + "\\" + file.Name, totalFile, _parent);
                             }
                         }
                     }

@@ -33,6 +33,7 @@ namespace Mso_Backup.Forms.Setup
         private void btnNext_Click(object sender, EventArgs e)
         {
             _parent.destinationPath = tbxTargetFolder.Text;
+            _parent.alwaysStartup = checkBox1.Checked;
             _parent.NextStep();
         }
 

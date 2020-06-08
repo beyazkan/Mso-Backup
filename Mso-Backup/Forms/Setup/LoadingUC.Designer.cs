@@ -81,6 +81,7 @@
             this.Controls.Add(this.progressBar1);
             this.Name = "LoadingUC";
             this.Size = new System.Drawing.Size(380, 104);
+            this.Load += new System.EventHandler(this.LoadingUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
