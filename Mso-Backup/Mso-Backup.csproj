@@ -92,11 +92,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CFile.cs" />
+    <Compile Include="Entity\CFile.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="Disk.cs" />
+    <Compile Include="Entity\Disk.cs" />
     <Compile Include="DiskYonetimi.cs" />
     <Compile Include="EMail.cs" />
+    <Compile Include="Entity\EfUser.cs" />
+    <Compile Include="Entity\EfInstall.cs" />
     <Compile Include="FileManagement.cs" />
     <Compile Include="Forms\DriversForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +111,12 @@
     </Compile>
     <Compile Include="Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
@@ -192,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

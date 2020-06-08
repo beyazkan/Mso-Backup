@@ -31,18 +31,18 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbxSmtpTestMail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbxSmtpPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbxSmtpUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbxSSL = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxSmtpPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxSmtpServer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -53,18 +53,18 @@
             // 
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.tbxSmtpTestMail);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.tbxSmtpPassword);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.tbxSmtpUsername);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.cbxSSL);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbxSmtpPort);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbxSmtpServer);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
@@ -91,12 +91,12 @@
             this.button1.Text = "Test Et...";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // tbxSmtpTestMail
             // 
-            this.textBox5.Location = new System.Drawing.Point(12, 258);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(179, 20);
-            this.textBox5.TabIndex = 12;
+            this.tbxSmtpTestMail.Location = new System.Drawing.Point(12, 258);
+            this.tbxSmtpTestMail.Name = "tbxSmtpTestMail";
+            this.tbxSmtpTestMail.Size = new System.Drawing.Size(179, 20);
+            this.tbxSmtpTestMail.TabIndex = 12;
             // 
             // label7
             // 
@@ -108,12 +108,12 @@
             this.label7.Text = "Uyarı: Girilen bilgilerde herhangi bir hata olup olmadığını \r\ndenetlemeden bir so" +
     "nra ki adıma geçmeyiniz. \r\nAksi halde E-posta alamayacaksınız.";
             // 
-            // textBox4
+            // tbxSmtpPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(95, 173);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(178, 20);
-            this.textBox4.TabIndex = 10;
+            this.tbxSmtpPassword.Location = new System.Drawing.Point(95, 173);
+            this.tbxSmtpPassword.Name = "tbxSmtpPassword";
+            this.tbxSmtpPassword.Size = new System.Drawing.Size(178, 20);
+            this.tbxSmtpPassword.TabIndex = 10;
             // 
             // label6
             // 
@@ -124,12 +124,12 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Parola :";
             // 
-            // textBox3
+            // tbxSmtpUsername
             // 
-            this.textBox3.Location = new System.Drawing.Point(95, 147);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 20);
-            this.textBox3.TabIndex = 8;
+            this.tbxSmtpUsername.Location = new System.Drawing.Point(95, 147);
+            this.tbxSmtpUsername.Name = "tbxSmtpUsername";
+            this.tbxSmtpUsername.Size = new System.Drawing.Size(177, 20);
+            this.tbxSmtpUsername.TabIndex = 8;
             // 
             // label5
             // 
@@ -150,17 +150,17 @@
             this.label4.Text = "Not: Lütfen kullandığınız SMTP sunucusunun güvenlik \r\nayarlarını kontrol ediniz. " +
     "Aksi halde bu servis \r\nçalışmayacaktır.";
             // 
-            // checkBox1
+            // cbxSSL
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(121, 71);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(47, 17);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Açık";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxSSL.AutoSize = true;
+            this.cbxSSL.Checked = true;
+            this.cbxSSL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxSSL.Location = new System.Drawing.Point(121, 71);
+            this.cbxSSL.Name = "cbxSSL";
+            this.cbxSSL.Size = new System.Drawing.Size(47, 17);
+            this.cbxSSL.TabIndex = 5;
+            this.cbxSSL.Text = "Açık";
+            this.cbxSSL.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -171,13 +171,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "SSL Desteği :";
             // 
-            // textBox2
+            // tbxSmtpPort
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(54, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "587";
+            this.tbxSmtpPort.Location = new System.Drawing.Point(121, 44);
+            this.tbxSmtpPort.Name = "tbxSmtpPort";
+            this.tbxSmtpPort.Size = new System.Drawing.Size(54, 20);
+            this.tbxSmtpPort.TabIndex = 3;
+            this.tbxSmtpPort.Text = "587";
             // 
             // label2
             // 
@@ -188,13 +188,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Smtp Port :";
             // 
-            // textBox1
+            // tbxSmtpServer
             // 
-            this.textBox1.Location = new System.Drawing.Point(121, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "smtp.gmail.com";
+            this.tbxSmtpServer.Location = new System.Drawing.Point(121, 17);
+            this.tbxSmtpServer.Name = "tbxSmtpServer";
+            this.tbxSmtpServer.Size = new System.Drawing.Size(151, 20);
+            this.tbxSmtpServer.TabIndex = 1;
+            this.tbxSmtpServer.Text = "smtp.gmail.com";
             // 
             // label1
             // 
@@ -245,18 +245,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbxSmtpTestMail;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbxSmtpPassword;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbxSmtpUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbxSSL;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxSmtpPort;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxSmtpServer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnBack;

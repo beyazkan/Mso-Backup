@@ -114,7 +114,7 @@
             // cbxEmail
             // 
             this.cbxEmail.AutoSize = true;
-            this.cbxEmail.Location = new System.Drawing.Point(10, 108);
+            this.cbxEmail.Location = new System.Drawing.Point(8, 108);
             this.cbxEmail.Name = "cbxEmail";
             this.cbxEmail.Size = new System.Drawing.Size(63, 17);
             this.cbxEmail.TabIndex = 3;

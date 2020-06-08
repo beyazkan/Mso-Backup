@@ -21,6 +21,13 @@ namespace Mso_Backup.Forms.Setup
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            _parent.install.Smtp_Server = tbxSmtpServer.Text;
+            _parent.install.Smtp_Port = Convert.ToInt32(tbxSmtpPort.Text);
+            _parent.install.Smtp_Username = tbxSmtpUsername.Text;
+            _parent.install.Smtp_Password = tbxSmtpPassword.Text;
+            _parent.install.Smtp_TestEmail = tbxSmtpTestMail.Text;
+            _parent.install.SupportSSL = cbxSSL.Checked;
+
             _parent.NextStep();
         }
 

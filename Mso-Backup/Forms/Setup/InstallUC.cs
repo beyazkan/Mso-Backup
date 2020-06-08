@@ -38,6 +38,7 @@ namespace Mso_Backup.Forms.Setup
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            _parent.install.Agreement = true;
             _parent.NextStep();
         }
     }

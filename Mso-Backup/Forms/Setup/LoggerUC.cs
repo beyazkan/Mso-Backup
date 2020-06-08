@@ -21,6 +21,7 @@ namespace Mso_Backup.Forms.Setup
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            _parent.install.Log_Database = cbxDatabase.Checked;
             _parent.NextStep();
             _parent.InstallScript();
         }

@@ -1,4 +1,5 @@
-﻿using Mso_Backup.Forms.Setup;
+﻿using Mso_Backup.Entity;
+using Mso_Backup.Forms.Setup;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,7 @@ namespace Mso_Backup.Forms
         // Loglama Nesnesi
         Logger logger = LogManager.GetCurrentClassLogger();
         FileManagement fileManagement = new FileManagement();
-        public string destinationPath;
-        public bool alwaysStartup;
+        public EfInstall install;
 
         public List<UserControl> userControls;
         public int _step { get; set; }
@@ -32,6 +32,8 @@ namespace Mso_Backup.Forms
                 logger.Info("Msobackup Kurulumu Çalıştırıldı.");
                 // Nesne ve Değişken Tanımları
                 _step = 0;
+                install = new EfInstall();
+                install.InstallLocation = Application.StartupPath;
                 userControls = new List<UserControl>();
                 userControls.Add(new InstallUC(this));
                 userControls.Add(new DestinationUC(this));
@@ -98,7 +100,7 @@ namespace Mso_Backup.Forms
 
         public void InstallScript()
         {
-            InstallToDestination();
+            InstallToDestination(install.DestinationPath);
             logger.Info("Program belirtilen dizine koplayandı.");
             Shortcuts();
         }
@@ -114,7 +116,7 @@ namespace Mso_Backup.Forms
             }
         }
 
-        public void InstallToDestination()
+        public void InstallToDestination(string destinationPath)
         {
             // Hedef Adresi Oluşturma
             if (!fileManagement.FolderExist(destinationPath))
@@ -134,7 +136,7 @@ namespace Mso_Backup.Forms
             {
                 fileManagement.FileInformation(item);
             }
-            fileManagement.AllCopyFileWithFolder(Application.StartupPath, destinationPath);
+            fileManagement.AllCopyFileWithFolder(install.InstallLocation, destinationPath);
         }
 
     }
