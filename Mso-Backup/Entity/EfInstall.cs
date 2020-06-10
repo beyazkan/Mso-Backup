@@ -30,6 +30,7 @@ namespace Mso_Backup.Entity
         public bool Log_EmailOptionWarn { get; set; }
         public string InstallLocation { get; set; }
         public string InstallDateTime { get; set; }
+        public int InstallState { get; set; }
 
     }
 }

@@ -1,0 +1,21 @@
+﻿CREATE TABLE "Settings" (
+	"Id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"Agreement"	INTEGER NOT NULL,
+	"StartOnStartup"	INTEGER NOT NULL,
+	"DestinationPath"	TEXT NOT NULL,
+	"Smtp_Server"	TEXT,
+	"Smtp_Port"	INTEGER,
+	"Support_SSL"	INTEGER,
+	"Smtp_Username"	TEXT,
+	"Smtp_Password"	TEXT,
+	"Log_Database"	INTEGER,
+	"Log_File"	INTEGER,
+	"Log_Email"	INTEGER,
+	"Log_EmailOptionError"	INTEGER,
+	"Log_EmailOptionSuccess"	INTEGER,
+	"Log_EmailOptionInfo"	INTEGER,
+	"Log_EmailOptionWarn"	INTEGER,
+	"InstallLocation"	TEXT NOT NULL,
+	"InstallDateTime"	TEXT NOT NULL,
+	"InstallState"	INTEGER NOT NULL
+);

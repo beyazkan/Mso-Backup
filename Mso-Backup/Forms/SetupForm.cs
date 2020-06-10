@@ -107,11 +107,11 @@ namespace Mso_Backup.Forms
 
         private void Shortcuts()
         {
-            Shortcut.CreateShortcut(destinationPath + "\\Mso-Backup.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            Shortcut.CreateShortcut(install.DestinationPath + "\\Mso-Backup.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
             logger.Info("Programın kısayolu, Kullanıcının masaüstü klasörüne oluşturuldu.");
-            if (alwaysStartup)
+            if (install.StartOnStartup)
             {
-                Shortcut.CreateStartupShortcut(destinationPath + "\\Mso-Backup.exe");
+                Shortcut.CreateStartupShortcut(install.DestinationPath + "\\Mso-Backup.exe");
                 logger.Info("Windows başlangıcında çalıştırılması için gerekli kısayol oluşturuldu.");
             }
         }

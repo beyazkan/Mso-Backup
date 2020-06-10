@@ -1,0 +1,23 @@
+﻿CREATE TABLE "Files" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"name"	TEXT NOT NULL,
+	"extension"	TEXT NOT NULL,
+	"size"	INTEGER NOT NULL,
+	"hashcode"	TEXT NOT NULL,
+	"attributes"	TEXT NOT NULL,
+	"directoryname"	BLOB NOT NULL,
+	"parentfolder"	TEXT,
+	"creationtime"	TEXT NOT NULL,
+	"lastwritetime"	TEXT NOT NULL,
+	"lastaccesstime"	TEXT NOT NULL,
+	"copystate"	INTEGER DEFAULT 0,
+	"copytime"	TEXT,
+	"copycount"	INTEGER,
+	"controlstate"	INTEGER DEFAULT 0,
+	"controltime"	TEXT,
+	"controlcount"	INTEGER,
+	"createtime"	TEXT NOT NULL,
+	"updatetime"	TEXT,
+	"deletetime"	TEXT,
+	"userid"	INTEGER
+);
