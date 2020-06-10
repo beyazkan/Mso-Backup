@@ -30,10 +30,10 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbxWarn = new System.Windows.Forms.CheckBox();
+            this.cbxInfo = new System.Windows.Forms.CheckBox();
+            this.cbxSuccess = new System.Windows.Forms.CheckBox();
+            this.cbxError = new System.Windows.Forms.CheckBox();
             this.cbxEmail = new System.Windows.Forms.CheckBox();
             this.cbxTextFile = new System.Windows.Forms.CheckBox();
             this.cbxDatabase = new System.Windows.Forms.CheckBox();
@@ -60,10 +60,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.cbxWarn);
+            this.groupBox2.Controls.Add(this.cbxInfo);
+            this.groupBox2.Controls.Add(this.cbxSuccess);
+            this.groupBox2.Controls.Add(this.cbxError);
             this.groupBox2.Location = new System.Drawing.Point(10, 132);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(256, 48);
@@ -71,45 +71,45 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "E-Posta Loglama Seçenekleri";
             // 
-            // checkBox4
+            // cbxWarn
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(183, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(50, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Uyarı";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbxWarn.AutoSize = true;
+            this.cbxWarn.Location = new System.Drawing.Point(183, 19);
+            this.cbxWarn.Name = "cbxWarn";
+            this.cbxWarn.Size = new System.Drawing.Size(50, 17);
+            this.cbxWarn.TabIndex = 3;
+            this.cbxWarn.Text = "Uyarı";
+            this.cbxWarn.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbxInfo
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(131, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(45, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Bilgi";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbxInfo.AutoSize = true;
+            this.cbxInfo.Location = new System.Drawing.Point(131, 19);
+            this.cbxInfo.Name = "cbxInfo";
+            this.cbxInfo.Size = new System.Drawing.Size(45, 17);
+            this.cbxInfo.TabIndex = 2;
+            this.cbxInfo.Text = "Bilgi";
+            this.cbxInfo.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbxSuccess
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(69, 19);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(55, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Başarı";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbxSuccess.AutoSize = true;
+            this.cbxSuccess.Location = new System.Drawing.Point(69, 19);
+            this.cbxSuccess.Name = "cbxSuccess";
+            this.cbxSuccess.Size = new System.Drawing.Size(55, 17);
+            this.cbxSuccess.TabIndex = 1;
+            this.cbxSuccess.Text = "Başarı";
+            this.cbxSuccess.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbxError
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(49, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Hata";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxError.AutoSize = true;
+            this.cbxError.Location = new System.Drawing.Point(14, 19);
+            this.cbxError.Name = "cbxError";
+            this.cbxError.Size = new System.Drawing.Size(49, 17);
+            this.cbxError.TabIndex = 0;
+            this.cbxError.Text = "Hata";
+            this.cbxError.UseVisualStyleBackColor = true;
             // 
             // cbxEmail
             // 
@@ -192,10 +192,10 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbxWarn;
+        private System.Windows.Forms.CheckBox cbxInfo;
+        private System.Windows.Forms.CheckBox cbxSuccess;
+        private System.Windows.Forms.CheckBox cbxError;
         private System.Windows.Forms.CheckBox cbxEmail;
         private System.Windows.Forms.CheckBox cbxTextFile;
         private System.Windows.Forms.CheckBox cbxDatabase;
