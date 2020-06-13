@@ -21,7 +21,6 @@ namespace Mso_Backup.Forms.Setup
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
-            _parent.InstallScript();
             Application.Exit();
         }
     }

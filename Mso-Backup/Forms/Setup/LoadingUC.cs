@@ -60,14 +60,14 @@ namespace Mso_Backup.Forms.Setup
         public void Install()
         {
             // Hedef Adresi Oluşturma
-            if (!fileManagement.FolderExist(_parent.destinationPath))
+            if (!fileManagement.FolderExist(_parent.install.DestinationPath))
             {
-                fileManagement.CreateDirectory(_parent.destinationPath);
-                logger.Info("Kurulum için belirtilen '{0}' hedef yol oluşturuldu.", _parent.destinationPath);
+                fileManagement.CreateDirectory(_parent.install.DestinationPath);
+                logger.Info("Kurulum için belirtilen '{0}' hedef yol oluşturuldu.", _parent.install.DestinationPath);
             }
             else
             {
-                logger.Warn("Kurulum için belirtilen '{0}' hedef yol zaten mevcut...", _parent.destinationPath);
+                logger.Warn("Kurulum için belirtilen '{0}' hedef yol zaten mevcut...", _parent.install.DestinationPath);
             }
 
             // Program dosyalarını Kopyalama
@@ -77,7 +77,7 @@ namespace Mso_Backup.Forms.Setup
             {
                 fileManagement.FileInformation(item);
             }
-            fileManagement.AllCopyForProgressBar(Application.StartupPath, _parent.destinationPath, this);
+            fileManagement.AllCopyForProgressBar(Application.StartupPath, _parent.install.DestinationPath, this);
         }
 
         private void LoadingUC_Load(object sender, EventArgs e)
