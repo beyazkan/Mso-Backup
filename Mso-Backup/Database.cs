@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mso_Backup.Entity;
+using NLog.Fluent;
 
 namespace Mso_Backup
 {
@@ -15,6 +16,7 @@ namespace Mso_Backup
     {
         FileManagement _file = new FileManagement();
         Logger logger = LogManager.GetCurrentClassLogger();
+        EfInstall _install;
         static string _exePath = Application.StartupPath;
         static string _Name = "\\msobackup.db";
         public string _filePath;
@@ -40,10 +42,14 @@ namespace Mso_Backup
         }
         public Database(string path, EfInstall install)
         {
+            _install = install;
             _filePath = path + _Name;
             _connectionString = $"Data Source={_filePath};Version=3";
             DbFileCheck();
-            CreateUser(install.User);
+            CreateUser(_install.User);
+            logger.Info("{0} adlı kullanıcı, varsayılan kullanıcı olarak eklenmiştir.", install.User.Username);
+            InsertSettings();
+            logger.Info("Ayarlar veritabanına girildi.");
         }
         private void Delete()
         {
@@ -104,7 +110,6 @@ namespace Mso_Backup
                 SQLiteCommand cmd = new SQLiteCommand(SqlCmd, _connection);
                 cmd.ExecuteNonQuery();
                 _connection.Close();
-                Console.WriteLine("Varsayılan kullanıcı eklenmiştir.");
             }
             catch (Exception e)
             {
@@ -191,13 +196,38 @@ namespace Mso_Backup
             }
             
         }
-
         private void CreateUser(EfUser user)
         {
             try
             {
                 string sql = "INSERT INTO Users(username, password, firstname, lastname, email, createdatetime) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');";
                 string sqlCommand = string.Format(sql, user.FirstName, user.LastName, user.Username, user.Password, user.Email, DateTime.Now.ToString());
+
+                Add(sqlCommand);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+        }
+        private void InsertSettings()
+        {
+            try
+            {
+                string sql = "INSERT INTO Settings(Agreement, " +
+                "StartOnStartup, DestinationPath, " +
+                "Smtp_Server, Smtp_Port, Support_SSL, " +
+                "Smtp_Username, Smtp_Password, " +
+                "Log_Database, Log_File, Log_Email, " +
+                "Log_EmailOptionError, Log_EmailOptionSuccess, " +
+                "Log_EmailOptionInfo, Log_EmailOptionWarn, " +
+                "InstallLocation, InstallDateTime, InstallState) " +
+                "VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}'," +
+                "'{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');";
+                string sqlCommand = string.Format(sql, _install.AgreementToDB, _install.StartOnStartupToDB, _install.DestinationPath,
+                    _install.smtp.Server, _install.smtp.Port, _install.smtp.SSLSupportToDB, _install.smtp.Username, _install.smtp.Password,
+                    _install.Log_DatabaseToDB, _install.Log_FileToDB, _install.Log_EmailToDB, _install.Log_EmailOptionErrorToDB, _install.Log_EmailOptionSuccessToDB,
+                    _install.Log_EmailOptionInfoToDB, _install.Log_EmailOptionWarnToDB, _install.InstallLocation, DateTime.Now.ToString(), 1);
 
                 Add(sqlCommand);
             }

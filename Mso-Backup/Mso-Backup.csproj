@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Entity\CFile.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Entity\Smtp.cs" />
     <Compile Include="Entity\Disk.cs" />
     <Compile Include="DiskYonetimi.cs" />
     <Compile Include="EMail.cs" />

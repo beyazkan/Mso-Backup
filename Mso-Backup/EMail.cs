@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Mso_Backup.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace Mso_Backup
 {
@@ -13,7 +14,8 @@ namespace Mso_Backup
     {
         SmtpClient _client = new SmtpClient();
         MailMessage _mailMessage = new MailMessage();
-
+        FileManagement _fileManagement = new FileManagement();
+        Smtp _Smtp;
 
         public EMail()
         {
@@ -31,9 +33,29 @@ namespace Mso_Backup
 
             _mailMessage.Attachments.Add(new Attachment("C:\\Users\\msabr\\OneDrive\\Resimler\\IMG_20200428_155754.jpg"));
 
+            
+        }
+        public EMail(Smtp smtp)
+        {
+            _Smtp = smtp;
+            _client.Credentials = new NetworkCredential(_Smtp.Username, _Smtp.Password);
+            _client.Port = _Smtp.Port;
+            _client.Host = _Smtp.Server;
+            _client.EnableSsl = _Smtp.SSLSupport;
+            _mailMessage.From = new MailAddress(_Smtp.Username, _Smtp.Name);
+            _mailMessage.IsBodyHtml = true;
+        }
+        public void TestMail()
+        {
+            _mailMessage.To.Add(_Smtp.TestEmail);
+            _mailMessage.Subject = "MsoBackup Test Maili";
+            string content = _fileManagement.GetFileAllText(Application.StartupPath + "\\Html\\mail-template.htm");
+            _mailMessage.Body = string.Format(content, "Mustafa Oğuz", 5, "E:", "123 GB");
+            Send();
+        }
+        public void Send()
+        {
             _client.Send(_mailMessage);
         }
-
-
     }
 }

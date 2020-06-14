@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.tbxSmtpTestMail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbxSmtpPassword = new System.Windows.Forms.TextBox();
@@ -46,13 +46,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.tbxViewofName = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbxViewofName);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.tbxSmtpTestMail);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tbxSmtpPassword);
@@ -68,7 +72,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 284);
+            this.groupBox1.Size = new System.Drawing.Size(279, 322);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "E-Posta Sunucu Ayarları";
@@ -76,24 +80,25 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 242);
+            this.label8.Location = new System.Drawing.Point(12, 278);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(148, 13);
             this.label8.TabIndex = 14;
             this.label8.Text = "Gönderilecek E-Posta Adresi :";
             // 
-            // button1
+            // btnTest
             // 
-            this.button1.Location = new System.Drawing.Point(198, 257);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Test Et...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTest.Location = new System.Drawing.Point(198, 293);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 13;
+            this.btnTest.Text = "Test Et...";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // tbxSmtpTestMail
             // 
-            this.tbxSmtpTestMail.Location = new System.Drawing.Point(12, 258);
+            this.tbxSmtpTestMail.Location = new System.Drawing.Point(12, 294);
             this.tbxSmtpTestMail.Name = "tbxSmtpTestMail";
             this.tbxSmtpTestMail.Size = new System.Drawing.Size(179, 20);
             this.tbxSmtpTestMail.TabIndex = 12;
@@ -101,7 +106,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 196);
+            this.label7.Location = new System.Drawing.Point(9, 232);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(267, 39);
             this.label7.TabIndex = 11;
@@ -207,7 +212,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(216, 293);
+            this.btnNext.Location = new System.Drawing.Point(216, 330);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 1;
@@ -217,13 +222,29 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(12, 294);
+            this.btnBack.Location = new System.Drawing.Point(12, 331);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 2;
             this.btnBack.Text = "Geri";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // tbxViewofName
+            // 
+            this.tbxViewofName.Location = new System.Drawing.Point(95, 199);
+            this.tbxViewofName.Name = "tbxViewofName";
+            this.tbxViewofName.Size = new System.Drawing.Size(178, 20);
+            this.tbxViewofName.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 202);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Görünen Ad :";
             // 
             // EmailUC
             // 
@@ -233,7 +254,7 @@
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.groupBox1);
             this.Name = "EmailUC";
-            this.Size = new System.Drawing.Size(303, 324);
+            this.Size = new System.Drawing.Size(303, 360);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -244,7 +265,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.TextBox tbxSmtpTestMail;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbxSmtpPassword;
@@ -260,5 +281,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox tbxViewofName;
+        private System.Windows.Forms.Label label9;
     }
 }
