@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mso_Backup.Entity
 {
-    class EfUser
+    public class EfUser
     {
         public int Id { get; set; }
         public string Username { get; set; }

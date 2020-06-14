@@ -204,6 +204,9 @@
     <Content Include="SQL\Drivers-Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SQL\Users-Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Forms\DriversForm.resx">
       <DependentUpon>DriversForm.cs</DependentUpon>
     </EmbeddedResource>

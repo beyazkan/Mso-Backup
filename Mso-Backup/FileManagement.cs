@@ -422,5 +422,19 @@ namespace Mso_Backup
                 }
             }
         }
+        public string GetFileAllText(string path)
+        {
+            string text = null;
+            try
+            {
+                text = File.ReadAllText(path);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+
+            return text;
+        }
     }
 }

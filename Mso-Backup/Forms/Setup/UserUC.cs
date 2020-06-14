@@ -21,6 +21,11 @@ namespace Mso_Backup.Forms.Setup
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            _parent.install.User.FirstName = tbxFirstName.Text;
+            _parent.install.User.LastName = tbxLastname.Text;
+            _parent.install.User.Username = tbxUsername.Text;
+            _parent.install.User.Password = tbxPassword.Text;
+            _parent.install.User.Email = tbxEMail.Text;
             _parent.NextStep();
         }
 

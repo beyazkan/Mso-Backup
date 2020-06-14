@@ -12,9 +12,7 @@ namespace Mso_Backup.Entity
         public bool Agreement { get; set; }
         public bool StartOnStartup { get; set; }
         public string DestinationPath { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public EfUser User = new EfUser();
         public string Smtp_Server { get; set; }
         public int Smtp_Port { get; set; }
         public bool SupportSSL { get; set; }

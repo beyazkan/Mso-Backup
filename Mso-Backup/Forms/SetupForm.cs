@@ -101,7 +101,7 @@ namespace Mso_Backup.Forms
         public void InstallScript()
         {
             InstallToDestination(install.DestinationPath);
-            Database database = new Database(install.DestinationPath);
+            Database database = new Database(install.DestinationPath, install);
             logger.Info("Program belirtilen dizine koplayandı.");
             Shortcuts();
         }

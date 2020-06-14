@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mso_Backup.Entity;
 
 namespace Mso_Backup
 {
@@ -19,9 +20,6 @@ namespace Mso_Backup
         public string _filePath;
         public string _connectionString;
         SQLiteConnection _connection;
-
-        static string _FirstUsers = "INSERT INTO Users(username, password, firstname, lastname, email, createdatetime) VALUES('ykpikacu', '654333', 'Mustafa', 'OĞUZ', 'iyimser.tuzlali@hotmail.com', '02.05.2020 21:24:22');";
-        static string _FirstUsers2 = "INSERT INTO Users(username, password, firstname, lastname, email, createdatetime) VALUES('goldpaw', '654333', 'Mustafa', 'OĞUZ', 'm.sabri.oguz@gmail.com', '02.05.2020 21:24:22');";
         static string _SelectAll = "SELECT * FROM Users;";
         static string _UpdateUsers = "UPDATE Users SET firstname = 'Mehmet' WHERE id = 2";
         static string _DeleteUsers = "DELETE FROM Users WHERE id = 2";
@@ -32,9 +30,6 @@ namespace Mso_Backup
             _connectionString = $"Data Source={_filePath};Version=3";
 
             DbFileCheck();
-            //CreateTable(_CreateUsersTable);
-            //CreateTable(_CreateFilesTable);
-            //CreateTable(_CreateDrivesTable);
             //Add(_FirstUsers);
             //Add(_FirstUsers2);
             //ListOfDB();
@@ -42,16 +37,14 @@ namespace Mso_Backup
             //ListOfDB();
             //Delete();
             //ListOfDB();
-
         }
-
-        public Database(string path)
+        public Database(string path, EfInstall install)
         {
             _filePath = path + _Name;
             _connectionString = $"Data Source={_filePath};Version=3";
             DbFileCheck();
+            CreateUser(install.User);
         }
-
         private void Delete()
         {
             try
@@ -66,7 +59,6 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-
         private void Update()
         {
             try
@@ -81,7 +73,6 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-
         private void ListOfDB()
         {
             try
@@ -105,7 +96,6 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-
         private void Add(String SqlCmd)
         {
             try
@@ -121,7 +111,6 @@ namespace Mso_Backup
                 Console.WriteLine("HATA:" + e.Message);
             }
         }
-
         public void Connect()
         {
             try
@@ -134,7 +123,6 @@ namespace Mso_Backup
                 throw;
             }
         }
-
         private void CreateTable(string sqlCommand)
         {
             try
@@ -149,7 +137,6 @@ namespace Mso_Backup
                 Console.WriteLine("Hata : " + e.Message);
             }
         }
-
         private void DbFileCheck()
         {
             if (!_file.FileExist(_filePath))
@@ -166,7 +153,6 @@ namespace Mso_Backup
                 Connect();
             }
         }
-
         private void CreateDatabase()
         {
             try
@@ -179,7 +165,6 @@ namespace Mso_Backup
                 throw;
             }
         }
-
         private void InstallTables()
         {
             try
@@ -189,13 +174,14 @@ namespace Mso_Backup
                 tables.Add("Drivers-Table.sql");
                 tables.Add("Files-Table.sql");
                 tables.Add("Settings-Table.sql");
+                tables.Add("Users-Table.sql");
 
                 foreach (var table in tables)
                 {
-                    string createDriversTable = sqlpath + table;
-                    string createDriversTableSQL = System.IO.File.ReadAllText(createDriversTable);
+                    string filepath = sqlpath + table;
+                    string sqlContent = _file.GetFileAllText(filepath);
 
-                    CreateTable(createDriversTableSQL);
+                    CreateTable(sqlContent);
                     logger.Info("{0} isimli tablo oluşturuldu.", table);
                 }
             }
@@ -204,6 +190,21 @@ namespace Mso_Backup
                 logger.Error(e.Message);
             }
             
+        }
+
+        private void CreateUser(EfUser user)
+        {
+            try
+            {
+                string sql = "INSERT INTO Users(username, password, firstname, lastname, email, createdatetime) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');";
+                string sqlCommand = string.Format(sql, user.FirstName, user.LastName, user.Username, user.Password, user.Email, DateTime.Now.ToString());
+
+                Add(sqlCommand);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
         }
     }
 }
