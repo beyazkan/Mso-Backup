@@ -20,7 +20,7 @@ namespace Mso_Backup
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (File.Exists(Application.StartupPath + "\\msobackup.db")){
-                Application.Run(new DriversForm());
+                Application.Run(new MainForm());
             }
             else
             {

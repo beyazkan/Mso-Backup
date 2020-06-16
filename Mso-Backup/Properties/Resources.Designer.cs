@@ -61,6 +61,16 @@ namespace Mso_Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap errors {
+            get {
+                object obj = ResourceManager.GetObject("errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon favicon {
@@ -86,6 +96,26 @@ namespace Mso_Backup.Properties {
         internal static System.Drawing.Bitmap LoadingScreen {
             get {
                 object obj = ResourceManager.GetObject("LoadingScreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sendmail {
+            get {
+                object obj = ResourceManager.GetObject("sendmail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap suggest {
+            get {
+                object obj = ResourceManager.GetObject("suggest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

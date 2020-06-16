@@ -101,6 +101,18 @@
     <Compile Include="Entity\EfUser.cs" />
     <Compile Include="Entity\EfInstall.cs" />
     <Compile Include="FileManagement.cs" />
+    <Compile Include="Forms\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DriversForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +191,30 @@
     <Compile Include="Forms\Setup\UserUC.Designer.cs">
       <DependentUpon>UserUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserControls\SuggestItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\SuggestItemUC.Designer.cs">
+      <DependentUpon>SuggestItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\ErrorItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\ErrorItemUC.Designer.cs">
+      <DependentUpon>ErrorItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\ErrorUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\ErrorUC.Designer.cs">
+      <DependentUpon>ErrorUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\MessageUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\MessageUC.Designer.cs">
+      <DependentUpon>MessageUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Komut.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -192,10 +228,13 @@
     <Content Include="Html\mail-template.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\errors.png" />
     <Content Include="Resources\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\icons8-cancel-40.png" />
+    <None Include="Resources\suggest.png" />
+    <None Include="Resources\sendmail.png" />
     <Content Include="SQL\Files-Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -208,6 +247,12 @@
     <Content Include="SQL\Users-Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Forms\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DriversForm.resx">
       <DependentUpon>DriversForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +294,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setup\UserUC.resx">
       <DependentUpon>UserUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\SuggestItemUC.resx">
+      <DependentUpon>SuggestItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\ErrorItemUC.resx">
+      <DependentUpon>ErrorItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\ErrorUC.resx">
+      <DependentUpon>ErrorUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\MessageUC.resx">
+      <DependentUpon>MessageUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
