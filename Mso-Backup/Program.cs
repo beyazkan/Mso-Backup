@@ -24,7 +24,7 @@ namespace Mso_Backup
             }
             else
             {
-                Application.Run(new SetupForm());
+                Application.Run(new MainForm());
             }
             
         }

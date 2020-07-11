@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +39,13 @@
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.gösterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kapatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -68,6 +74,7 @@
             this.kapatToolStripMenuItem.Name = "kapatToolStripMenuItem";
             this.kapatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kapatToolStripMenuItem.Text = "Kapat";
+            this.kapatToolStripMenuItem.Click += new System.EventHandler(this.kapatToolStripMenuItem_Click);
             // 
             // görevToolStripMenuItem
             // 
@@ -80,7 +87,7 @@
             // oluşturToolStripMenuItem
             // 
             this.oluşturToolStripMenuItem.Name = "oluşturToolStripMenuItem";
-            this.oluşturToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oluşturToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.oluşturToolStripMenuItem.Text = "Oluştur";
             // 
             // logToolStripMenuItem
@@ -111,6 +118,38 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "Arkaplanda Çalışmaya Devam Ediyor.";
+            this.notifyIcon1.BalloonTipTitle = "MsoBackup - Küçültüldü.";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "MsoBackup";
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gösterToolStripMenuItem,
+            this.kapatToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 48);
+            // 
+            // gösterToolStripMenuItem
+            // 
+            this.gösterToolStripMenuItem.Name = "gösterToolStripMenuItem";
+            this.gösterToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.gösterToolStripMenuItem.Text = "Göster";
+            this.gösterToolStripMenuItem.Click += new System.EventHandler(this.gösterToolStripMenuItem_Click);
+            // 
+            // kapatToolStripMenuItem1
+            // 
+            this.kapatToolStripMenuItem1.Name = "kapatToolStripMenuItem1";
+            this.kapatToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
+            this.kapatToolStripMenuItem1.Text = "Kapat";
+            this.kapatToolStripMenuItem1.Click += new System.EventHandler(this.kapatToolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,10 +162,12 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsoBackup";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +184,9 @@
         private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem gösterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kapatToolStripMenuItem1;
     }
 }
