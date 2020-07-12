@@ -77,6 +77,7 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Giriş Yap";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnPasswordReset
             // 
@@ -86,6 +87,7 @@
             this.btnPasswordReset.TabIndex = 5;
             this.btnPasswordReset.Text = "Şifremi Unuttum!";
             this.btnPasswordReset.UseVisualStyleBackColor = true;
+            this.btnPasswordReset.Click += new System.EventHandler(this.btnPasswordReset_Click);
             // 
             // LoginForm
             // 
@@ -102,12 +104,12 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
-            this.Opacity = 0D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsoBackup - Giriş Yap";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
+            this.Shown += new System.EventHandler(this.LoginForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

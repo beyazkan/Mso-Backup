@@ -99,8 +99,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblAciklama;
         private System.Windows.Forms.Label lblPercent;
+        public System.Windows.Forms.ProgressBar progressBar1;
     }
 }

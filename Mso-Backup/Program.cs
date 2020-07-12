@@ -20,11 +20,11 @@ namespace Mso_Backup
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (File.Exists(Application.StartupPath + "\\msobackup.db")){
-                Application.Run(new MainForm());
+                Application.Run(new Main());
             }
             else
             {
-                Application.Run(new MainForm());
+                Application.Run(new SetupForm());
             }
             
         }

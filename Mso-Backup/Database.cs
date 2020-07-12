@@ -201,7 +201,7 @@ namespace Mso_Backup
             try
             {
                 string sql = "INSERT INTO Users(username, password, firstname, lastname, email, createdatetime) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');";
-                string sqlCommand = string.Format(sql, user.FirstName, user.LastName, user.Username, user.Password, user.Email, DateTime.Now.ToString());
+                string sqlCommand = string.Format(sql, user.Username, user.Password, user.FirstName, user.LastName, user.Email, DateTime.Now.ToString());
 
                 Add(sqlCommand);
             }
@@ -236,5 +236,7 @@ namespace Mso_Backup
                 logger.Error(e.Message);
             }
         }
+
+        
     }
 }

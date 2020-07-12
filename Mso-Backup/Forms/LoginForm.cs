@@ -13,20 +13,32 @@ namespace Mso_Backup
 {
     public partial class LoginForm : Form
     {
+        Database database;
+
         public LoginForm()
         {
             InitializeComponent();
+            database = new Database();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoadingForm loadingFrom = new LoadingForm();
-            DriversForm drivers = new DriversForm();
-            loadingFrom.Show();
-            //System.Threading.Thread.Sleep(1000);
-            //this.Opacity = 100;
-            //System.Threading.Thread.Sleep(1000);
-            //this.Opacity = 0;
+            Application.Exit();
+        }
+
+        private void LoginForm_Shown(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPasswordReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
