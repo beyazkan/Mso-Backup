@@ -16,11 +16,13 @@ namespace Mso_Backup
     {
         Database database;
         Logger logger = LogManager.GetCurrentClassLogger();
+        MainForm _mainForm;
 
-        public LoginForm()
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
             database = new Database();
+            _mainForm = mainForm;
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,13 +49,18 @@ namespace Mso_Backup
             }
             else
             {
+                // Kullanıcı Doğrulama
                 if (database.checkUser(tbxUsername.Text, tbxPassword.Text))
                 {
+                    // Ana Pencerenin Açılması
                     MessageBox.Show("Giriş yapılmıştır.");
                     logger.Info($"{tbxUsername.Text} adlı kullanıcı giriş yaptı.");
+                    this.Hide();
+                    _mainForm.Show();
                 }
                 else
                 {
+                    // TODO : Hatalı yada şüpheli giriş denemeleri için kontrol sağlanacak...
                     MessageBox.Show("Kullanıcı adı veya Şifre Hatalıdır.");
                     logger.Info($"{tbxUsername.Text} - Kullanıcı adı veya Şifre Hatalıdır.");
                     database.login_attemp(tbxUsername.Text);
@@ -63,7 +70,7 @@ namespace Mso_Backup
 
         private void btnPasswordReset_Click(object sender, EventArgs e)
         {
-
+            // TODO : Şifremi Unuttum Seçeneği Kodlanacak...
         }
 
         private void tbxPassword_KeyDown(object sender, KeyEventArgs e)

@@ -20,12 +20,14 @@ namespace Mso_Backup.Forms
         public Main()
         {
             InitializeComponent();
+            // Yükleme Ekranı...
             Control.CheckForIllegalCrossThreadCalls = false;
             _loadingForm = new LoadingForm();
             Thread thread1 = new Thread(new ThreadStart(Loading));
             thread1.Start();
+            // Temel Nesneler Tanımlanıyor..
             _mainForm = new MainForm(_loadingForm);
-            _loginForm = new LoginForm();
+            _loginForm = new LoginForm(_mainForm);
             _loginForm.Show();
             thread1.Abort();
         }
