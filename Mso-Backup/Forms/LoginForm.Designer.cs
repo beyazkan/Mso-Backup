@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxUsername = new System.Windows.Forms.TextBox();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnPasswordReset = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -55,19 +55,21 @@
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Parola :";
             // 
-            // textBox1
+            // tbxUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbxUsername.Location = new System.Drawing.Point(91, 12);
+            this.tbxUsername.Name = "tbxUsername";
+            this.tbxUsername.Size = new System.Drawing.Size(187, 20);
+            this.tbxUsername.TabIndex = 2;
+            this.tbxUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxUsername_KeyDown);
             // 
-            // textBox2
+            // tbxPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(91, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 20);
-            this.textBox2.TabIndex = 3;
+            this.tbxPassword.Location = new System.Drawing.Point(91, 38);
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.Size = new System.Drawing.Size(187, 20);
+            this.tbxPassword.TabIndex = 3;
+            this.tbxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxPassword_KeyDown);
             // 
             // btnLogin
             // 
@@ -96,8 +98,8 @@
             this.ClientSize = new System.Drawing.Size(297, 100);
             this.Controls.Add(this.btnPasswordReset);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxPassword);
+            this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -119,8 +121,8 @@
 
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxUsername;
+        private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnPasswordReset;
     }

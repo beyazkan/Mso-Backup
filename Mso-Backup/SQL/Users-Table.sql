@@ -5,7 +5,7 @@
 	"firstname"	TEXT NOT NULL,
 	"lastname"	TEXT NOT NULL,
 	"email" TEXT NOT NULL,
-	"attempt"	INTEGER,
+	"attempt"	INTEGER DEFAULT 0,
 	"attemptdatetime"	TEXT,
 	"createdatetime"	TEXT NOT NULL,
 	"updatedatetime"	TEXT,

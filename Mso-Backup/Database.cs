@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mso_Backup.Entity;
 using NLog.Fluent;
+using System.Data;
 
 namespace Mso_Backup
 {
@@ -23,7 +24,6 @@ namespace Mso_Backup
         public string _connectionString;
         SQLiteConnection _connection;
         static string _SelectAll = "SELECT * FROM Users;";
-        static string _UpdateUsers = "UPDATE Users SET firstname = 'Mehmet' WHERE id = 2";
         static string _DeleteUsers = "DELETE FROM Users WHERE id = 2";
 
         public Database()
@@ -65,12 +65,12 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-        private void Update()
+        private void Update(string sqlQuery)
         {
             try
             {
                 _connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(_UpdateUsers, _connection);
+                SQLiteCommand cmd = new SQLiteCommand(sqlQuery, _connection);
                 cmd.ExecuteNonQuery();
                 _connection.Close();
             }
@@ -236,7 +236,69 @@ namespace Mso_Backup
                 logger.Error(e.Message);
             }
         }
+        public void updateLastLogin(string username)
+        {
+            string TarihZaman = DateTime.Now.ToString();
+            string sqlQuery = $"UPDATE Users SET lastlogin = '{TarihZaman}' WHERE username = '{ username }'";
+            Update(sqlQuery);
+        }
+        public bool checkUser(string username, string password)
+        {
+            try
+            {
+                string sqlQuery = "SELECT * FROM Users WHERE username=@username AND password=@password;";
+                SQLiteCommand cmd = new SQLiteCommand(sqlQuery, _connection);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                DataTable dt = new DataTable();
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    updateLastLogin(username);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                logger.Error(e.Message);
+                return false;
+            }
+        }
+        public void login_attemp(string username)
+        {
+            try
+            {
+                int attempt;
+                DateTime dateTime;
+                string sqlQuery = "SELECT attempt, attemptdatetime FROM Users WHERE username=@username;";
 
-        
+                _connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(sqlQuery, _connection);
+                cmd.Parameters.AddWithValue("@username", username);
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) {
+                        reader.Read();
+                        attempt = Int32.Parse(reader["attempt"].ToString());
+                        dateTime = Convert.ToDateTime(reader["attemptdatetime"]);
+                        MessageBox.Show(username + "adlı kullanının " + attempt + "kere deneme yapmıştır." + dateTime.ToString() + "tarihinde");
+                    }
+                }
+                _connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                logger.Error(e.Message);
+            }
+            
+
+        }
     }
 }
