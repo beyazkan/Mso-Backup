@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Mso_Backup
 {
@@ -14,7 +15,7 @@ namespace Mso_Backup
 
         public void Calistir(string arguman)
         {
-            _startInfo.WorkingDirectory = "C:\\Users\\msabr\\source\\repos\\devcon\\";
+            _startInfo.WorkingDirectory = Application.StartupPath + "\\Exe\\";
             _startInfo.FileName  = "devcon.exe";
             _startInfo.Arguments = arguman;
             _startInfo.WindowStyle = ProcessWindowStyle.Hidden;

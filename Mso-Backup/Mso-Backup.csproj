@@ -254,6 +254,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shortcut.cs" />
+    <Content Include="devcon.exe" />
+    <Content Include="Exe\devcon.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Html\mail-template.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
