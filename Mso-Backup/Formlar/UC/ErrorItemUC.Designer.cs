@@ -1,4 +1,6 @@
-﻿namespace Mso_Backup.Formlar.UC
+﻿using Mso_Backup.Properties;
+
+namespace Mso_Backup.Formlar.UC
 {
     partial class ErrorItemUC
     {
@@ -37,7 +39,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Mso_Backup.Properties.Resources.errors;
+            this.pictureBox1.Image = Resources.errors;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(22, 22);

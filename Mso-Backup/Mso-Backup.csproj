@@ -203,6 +203,12 @@
     <Compile Include="Formlar\UC\DiskUC.Designer.cs">
       <DependentUpon>DiskUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\UC\ProgressUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formlar\UC\ProgressUC.Designer.cs">
+      <DependentUpon>ProgressUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formlar\UC\SuggestItemUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -227,6 +233,12 @@
     <Compile Include="Formlar\UC\MessageUC.Designer.cs">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\UC\TaskUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formlar\UC\TaskUC.Designer.cs">
+      <DependentUpon>TaskUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Komut.cs" />
     <Compile Include="Formlar\LoginForm.cs">
       <SubType>Form</SubType>
@@ -236,17 +248,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Shortcut.cs" />
     <Content Include="Html\mail-template.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\errors.png" />
+    <None Include="Resources\external-disk.png" />
     <Content Include="Resources\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\icons8-cancel-40.png" />
     <None Include="Resources\suggest.png" />
     <None Include="Resources\sendmail.png" />
+    <None Include="Resources\task.png" />
     <Content Include="SQL\Files-Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -310,6 +329,12 @@
     <EmbeddedResource Include="Formlar\Setup\UC\UserUC.resx">
       <DependentUpon>UserUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\UC\DiskUC.resx">
+      <DependentUpon>DiskUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\UC\ProgressUC.resx">
+      <DependentUpon>ProgressUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formlar\UC\SuggestItemUC.resx">
       <DependentUpon>SuggestItemUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,16 +347,14 @@
     <EmbeddedResource Include="Formlar\UC\MessageUC.resx">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\UC\TaskUC.resx">
+      <DependentUpon>TaskUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

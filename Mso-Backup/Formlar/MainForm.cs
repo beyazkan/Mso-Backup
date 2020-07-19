@@ -72,7 +72,7 @@ namespace Mso_Backup.Formlar
             _driverForms.Show();
         }
 
-        private void textToolStripMenuItem_Click(object sender, EventArgs e)
+        private void logToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(Application.StartupPath + "\\logs");
         }

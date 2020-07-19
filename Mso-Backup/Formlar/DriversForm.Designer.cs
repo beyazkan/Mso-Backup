@@ -139,6 +139,7 @@
             this.Controls.Add(this.checkedListBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DriversForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Depolama Cihazları";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DriversForm_FormClosing);
             this.gbxDiskBilgileri.ResumeLayout(false);
