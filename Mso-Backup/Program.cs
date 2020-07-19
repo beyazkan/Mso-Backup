@@ -1,10 +1,8 @@
-﻿using Mso_Backup.Forms;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mso_Backup.Formlar;
+using Mso_Backup.Formlar.Setup;
 
 
 namespace Mso_Backup

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Mso_Backup.Entity;
 
 namespace Mso_Backup
 {

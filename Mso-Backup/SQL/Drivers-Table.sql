@@ -7,6 +7,7 @@
 	"size"	INTEGER NOT NULL,
 	"freespace"	INTEGER NOT NULL,
 	"state"	INTEGER,
+	"laststatedatetime"	TEXT NOT NULL,
 	"createdatetime"	TEXT NOT NULL,
 	"updatedatetime"	TEXT,
 	"deletedatetime"	TEXT,

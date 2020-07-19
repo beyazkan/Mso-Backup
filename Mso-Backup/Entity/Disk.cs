@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mso_Backup
+namespace Mso_Backup.Entity
 {
     class Disk
     {
