@@ -64,5 +64,10 @@ namespace Mso_Backup.Forms
             this.Show();
             notifyIcon1.Visible = false;
         }
+
+        public void setStatusBarText(string text)
+        {
+            toolStripStatusLabel1.Text = text;
+        }
     }
 }

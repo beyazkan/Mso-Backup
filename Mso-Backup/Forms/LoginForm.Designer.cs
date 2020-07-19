@@ -67,6 +67,7 @@
             // 
             this.tbxPassword.Location = new System.Drawing.Point(91, 38);
             this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(187, 20);
             this.tbxPassword.TabIndex = 3;
             this.tbxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxPassword_KeyDown);

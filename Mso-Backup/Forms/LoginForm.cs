@@ -57,6 +57,8 @@ namespace Mso_Backup
                     logger.Info($"{tbxUsername.Text} adlı kullanıcı giriş yaptı.");
                     this.Hide();
                     _mainForm.Show();
+                    _mainForm.setStatusBarText(tbxUsername.Text + " adlı kullanıcı ile giriş yapılmıştır.");
+                    _mainForm.Text = "MsoBackup - Kullanıcı : " + tbxUsername.Text;
                 }
                 else
                 {
