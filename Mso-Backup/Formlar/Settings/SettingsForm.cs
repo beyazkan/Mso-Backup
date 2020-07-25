@@ -8,5 +8,14 @@ namespace Mso_Backup.Formlar.Settings
         {
             InitializeComponent();
         }
+
+        private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                this.Hide();
+            }
+        }
     }
 }

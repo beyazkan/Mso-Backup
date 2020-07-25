@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mso_Backup.Formlar.Settings;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace Mso_Backup.Formlar
     {
         LoadingForm _loadingForm;
         DriversForm _driverForms;
+        SettingsForm _settingsForm;
+
         public MainForm(LoadingForm loadingForm)
         {
             InitializeComponent();
@@ -19,7 +22,8 @@ namespace Mso_Backup.Formlar
             _loadingForm.LoadingUpdate(5, "Program Yükleniyor.....");
             _driverForms = new DriversForm();
             _loadingForm.LoadingUpdate(10, "Sürücü Nesnesi Yüklendi.");
-            _loadingForm.LoadingUpdate(20, "Nesne 2 Yüklendi");
+            _settingsForm = new SettingsForm();
+            _loadingForm.LoadingUpdate(20, "Ayarlar Penceresi Yüklendi.");
             _loadingForm.LoadingUpdate(30, "Nesne 3 Yüklendi");
             _loadingForm.LoadingUpdate(40, "Nesne 4 Yüklendi");
             _loadingForm.LoadingUpdate(50, "Nesne 5 Yüklendi");
@@ -75,6 +79,11 @@ namespace Mso_Backup.Formlar
         private void logToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(Application.StartupPath + "\\logs");
+        }
+
+        private void ayarlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _settingsForm.Show();
         }
     }
 }
