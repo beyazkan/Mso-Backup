@@ -19,6 +19,7 @@ namespace Mso_Backup
             Application.SetCompatibleTextRenderingDefault(false);
             if (File.Exists(Application.StartupPath + "\\msobackup.db")){
                 Application.Run(new Main());
+                //Application.Run(new Deneme());
             }
             else
             {

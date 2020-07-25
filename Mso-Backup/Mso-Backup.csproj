@@ -113,6 +113,12 @@
     <Compile Include="Formlar\CustomMessageBox.Designer.cs">
       <DependentUpon>CustomMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\Deneme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Deneme.Designer.cs">
+      <DependentUpon>Deneme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formlar\DriversForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,7 +260,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shortcut.cs" />
-    <Content Include="devcon.exe" />
     <Content Include="Exe\devcon.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -287,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\CustomMessageBox.resx">
       <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Deneme.resx">
+      <DependentUpon>Deneme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\DriversForm.resx">
       <DependentUpon>DriversForm.cs</DependentUpon>
