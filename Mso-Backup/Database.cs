@@ -65,7 +65,7 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-        private void Update(string sqlQuery)
+        public void Update(string sqlQuery)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Mso_Backup
                 Console.WriteLine("HATA : " + e.Message);
             }
         }
-        private void Add(String SqlCmd)
+        public void Add(String SqlCmd)
         {
             try
             {
@@ -113,7 +113,8 @@ namespace Mso_Backup
             }
             catch (Exception e)
             {
-                Console.WriteLine("HATA:" + e.Message);
+                logger.Error(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
         public void Connect()
@@ -299,6 +300,60 @@ namespace Mso_Backup
             }
             
 
+        }
+        public bool hasAnyEntry(string sqlQuery)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(sqlQuery, _connection);
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<Disk> GetDisks()
+        {
+            List<Disk> disks = new List<Disk>();
+            try
+            {
+                string sqlQuery = "SELECT * FROM Drivers";
+                _connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(sqlQuery, _connection);
+                cmd.ExecuteNonQuery();
+                SQLiteDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Disk disk = new Disk
+                    {
+                        Id = Convert.ToInt32(dr["id"]),
+                        PNPDeviceId = (string)dr["pnpdeviceid"],
+                        Model = (string)dr["model"],
+                        SerialNumber = (string)dr["serialnumber"],
+                        DriveLetter = (string)dr["driveletter"],
+                        Size = Convert.ToInt64(dr["size"]),
+                        FreeSpace = Convert.ToInt64(dr["freespace"]),
+                        State = Convert.ToInt32(dr["state"]),
+                        CreateDateTime = Convert.ToDateTime(dr["createdatetime"]),
+                        UserID = Convert.ToInt32(dr["userid"])
+                    };
+                    disks.Add(disk);
+                }
+                _connection.Close();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                MessageBox.Show(e.Message);
+            }
+
+            return disks;
         }
     }
 }

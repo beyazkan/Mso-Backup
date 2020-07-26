@@ -36,6 +36,9 @@
             this.görevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oluşturToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dahiliDiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kullanıcıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oluşturToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -48,13 +51,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.kullanıcıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oluşturToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.listeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flDisks = new System.Windows.Forms.FlowLayoutPanel();
             this.progressUC2 = new Mso_Backup.Formlar.UC.ProgressUC();
             this.progressUC1 = new Mso_Backup.Formlar.UC.ProgressUC();
-            this.diskUC2 = new Mso_Backup.Formlar.UC.DiskUC();
-            this.diskUC1 = new Mso_Backup.Formlar.UC.DiskUC();
             this.taskUC2 = new Mso_Backup.Formlar.UC.TaskUC();
             this.taskUC1 = new Mso_Backup.Formlar.UC.TaskUC();
             this.menuStrip1.SuspendLayout();
@@ -76,7 +75,7 @@
             this.ayarlarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(831, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -116,6 +115,27 @@
             this.dahiliDiskToolStripMenuItem.Text = "Disk Yönetimi";
             this.dahiliDiskToolStripMenuItem.Click += new System.EventHandler(this.dahiliDiskToolStripMenuItem_Click);
             // 
+            // kullanıcıToolStripMenuItem
+            // 
+            this.kullanıcıToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oluşturToolStripMenuItem1,
+            this.listeleToolStripMenuItem});
+            this.kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
+            this.kullanıcıToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.kullanıcıToolStripMenuItem.Text = "Kullanıcı";
+            // 
+            // oluşturToolStripMenuItem1
+            // 
+            this.oluşturToolStripMenuItem1.Name = "oluşturToolStripMenuItem1";
+            this.oluşturToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.oluşturToolStripMenuItem1.Text = "Oluştur";
+            // 
+            // listeleToolStripMenuItem
+            // 
+            this.listeleToolStripMenuItem.Name = "listeleToolStripMenuItem";
+            this.listeleToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.listeleToolStripMenuItem.Text = "Listele";
+            // 
             // logToolStripMenuItem
             // 
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
@@ -136,7 +156,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(831, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -191,11 +211,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.diskUC2);
-            this.groupBox2.Controls.Add(this.diskUC1);
+            this.groupBox2.Controls.Add(this.flDisks);
             this.groupBox2.Location = new System.Drawing.Point(425, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(363, 148);
+            this.groupBox2.Size = new System.Drawing.Size(394, 148);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dahili Diskler";
@@ -206,7 +225,7 @@
             this.groupBox3.Controls.Add(this.progressUC1);
             this.groupBox3.Location = new System.Drawing.Point(13, 181);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(775, 124);
+            this.groupBox3.Size = new System.Drawing.Size(806, 124);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "İşlemler";
@@ -215,58 +234,31 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(13, 311);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(775, 114);
+            this.richTextBox1.Size = new System.Drawing.Size(806, 114);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
-            // kullanıcıToolStripMenuItem
+            // flDisks
             // 
-            this.kullanıcıToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oluşturToolStripMenuItem1,
-            this.listeleToolStripMenuItem});
-            this.kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
-            this.kullanıcıToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.kullanıcıToolStripMenuItem.Text = "Kullanıcı";
-            // 
-            // oluşturToolStripMenuItem1
-            // 
-            this.oluşturToolStripMenuItem1.Name = "oluşturToolStripMenuItem1";
-            this.oluşturToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
-            this.oluşturToolStripMenuItem1.Text = "Oluştur";
-            // 
-            // listeleToolStripMenuItem
-            // 
-            this.listeleToolStripMenuItem.Name = "listeleToolStripMenuItem";
-            this.listeleToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.listeleToolStripMenuItem.Text = "Listele";
+            this.flDisks.AutoScroll = true;
+            this.flDisks.Location = new System.Drawing.Point(7, 20);
+            this.flDisks.Name = "flDisks";
+            this.flDisks.Size = new System.Drawing.Size(381, 122);
+            this.flDisks.TabIndex = 0;
             // 
             // progressUC2
             // 
             this.progressUC2.Location = new System.Drawing.Point(14, 73);
             this.progressUC2.Name = "progressUC2";
-            this.progressUC2.Size = new System.Drawing.Size(748, 46);
+            this.progressUC2.Size = new System.Drawing.Size(786, 46);
             this.progressUC2.TabIndex = 1;
             // 
             // progressUC1
             // 
             this.progressUC1.Location = new System.Drawing.Point(14, 20);
             this.progressUC1.Name = "progressUC1";
-            this.progressUC1.Size = new System.Drawing.Size(748, 46);
+            this.progressUC1.Size = new System.Drawing.Size(786, 46);
             this.progressUC1.TabIndex = 0;
-            // 
-            // diskUC2
-            // 
-            this.diskUC2.Location = new System.Drawing.Point(7, 82);
-            this.diskUC2.Name = "diskUC2";
-            this.diskUC2.Size = new System.Drawing.Size(339, 55);
-            this.diskUC2.TabIndex = 1;
-            // 
-            // diskUC1
-            // 
-            this.diskUC1.Location = new System.Drawing.Point(7, 20);
-            this.diskUC1.Name = "diskUC1";
-            this.diskUC1.Size = new System.Drawing.Size(339, 55);
-            this.diskUC1.TabIndex = 0;
             // 
             // taskUC2
             // 
@@ -286,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(831, 450);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -332,8 +324,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private UC.DiskUC diskUC2;
-        private UC.DiskUC diskUC1;
         private UC.ProgressUC progressUC2;
         private UC.ProgressUC progressUC1;
         private UC.TaskUC taskUC2;
@@ -341,5 +331,6 @@
         private System.Windows.Forms.ToolStripMenuItem kullanıcıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oluşturToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem listeleToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flDisks;
     }
 }

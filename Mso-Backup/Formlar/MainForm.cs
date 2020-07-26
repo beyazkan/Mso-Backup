@@ -1,4 +1,5 @@
 ﻿using Mso_Backup.Formlar.Settings;
+using Mso_Backup.Formlar.UC;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ namespace Mso_Backup.Formlar
         LoadingForm _loadingForm;
         DriversForm _driverForms;
         SettingsForm _settingsForm;
+        DiskYonetimi _diskYonetimi;
 
         public MainForm(LoadingForm loadingForm)
         {
@@ -24,8 +26,10 @@ namespace Mso_Backup.Formlar
             _loadingForm.LoadingUpdate(10, "Sürücü Nesnesi Yüklendi.");
             _settingsForm = new SettingsForm();
             _loadingForm.LoadingUpdate(20, "Ayarlar Penceresi Yüklendi.");
-            _loadingForm.LoadingUpdate(30, "Nesne 3 Yüklendi");
-            _loadingForm.LoadingUpdate(40, "Nesne 4 Yüklendi");
+            _diskYonetimi = new DiskYonetimi();
+            _loadingForm.LoadingUpdate(30, "Disk Nesnesi Yüklendi.");
+            DiskListele();
+            _loadingForm.LoadingUpdate(40, "Diskler Yüklendi");
             _loadingForm.LoadingUpdate(50, "Nesne 5 Yüklendi");
             _loadingForm.LoadingUpdate(60, "Nesne 6 Yüklendi");
             _loadingForm.LoadingUpdate(70, "Nesne 7 Yüklendi");
@@ -33,6 +37,15 @@ namespace Mso_Backup.Formlar
             _loadingForm.LoadingUpdate(90, "Nesne 9 Yüklendi");
             _loadingForm.LoadingUpdate(100, "Nesne 10 Yüklendi");
         }
+
+        private void DiskListele()
+        {
+            foreach (var disk in _diskYonetimi.disks)
+            {
+                flDisks.Controls.Add(new DiskUC(disk));
+            }
+        }
+
         private void gösterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();

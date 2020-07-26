@@ -17,5 +17,15 @@ namespace Mso_Backup.Formlar.Settings
                 this.Hide();
             }
         }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
