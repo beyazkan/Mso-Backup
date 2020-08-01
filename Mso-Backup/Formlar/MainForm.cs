@@ -1,5 +1,6 @@
 ﻿using Mso_Backup.Formlar.Settings;
 using Mso_Backup.Formlar.UC;
+using NLog;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace Mso_Backup.Formlar
         DriversForm _driverForms;
         SettingsForm _settingsForm;
         DiskYonetimi _diskYonetimi;
+        Logger _logger;
 
         public MainForm(LoadingForm loadingForm)
         {
@@ -22,6 +24,8 @@ namespace Mso_Backup.Formlar
             _loadingForm.LoadingUpdate(3, "Program Yükleniyor...");
             _loadingForm.LoadingUpdate(4, "Program Yükleniyor....");
             _loadingForm.LoadingUpdate(5, "Program Yükleniyor.....");
+            _logger = LogManager.GetCurrentClassLogger();
+            _loadingForm.LoadingUpdate(7, "Loglama Nesnesi Yüklendi.");
             _driverForms = new DriversForm();
             _loadingForm.LoadingUpdate(10, "Sürücü Nesnesi Yüklendi.");
             _settingsForm = new SettingsForm();
@@ -53,11 +57,13 @@ namespace Mso_Backup.Formlar
         }
         private void kapatToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            _logger.Info("Program sonlandırıldı.");
             Application.Exit();
         }
 
         private void kapatToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            _logger.Info("Program sonlandırıldı.");
             Application.Exit();
         }
 
