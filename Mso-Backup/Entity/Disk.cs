@@ -15,11 +15,16 @@ namespace Mso_Backup.Entity
         public string DriveLetter { get; set; }
         public long Size { get; set; }
         public long FreeSpace { get; set; }
-        public String SizeGB { get { return Convert.ToString(Math.Ceiling((decimal)this.Size / 1024 / 1024 / 1024) + 1) + "GB";  } set { } }
-        public String FreeSpaceGB { get { return Convert.ToString(Math.Ceiling((decimal)this.FreeSpace / 1024 / 1024 / 1024) + 1) + "GB"; } set { } }
+        public long UsedSpace { get { return Size - FreeSpace; } set { } }
+        public int SizeToInt { get { return Tools.FormatSize(Size); } set { } }
+        public int FreeSpaceToInt { get { return Tools.FormatSize(FreeSpace); } set { } }
+        public int UsedSpaceToInt { get { return Tools.FormatSize(UsedSpace); } set { } }
+        public String SizeText { get { return Tools.FormatSizeText(Size);  } set { } }
+        public String FreeSpaceText { get { return Tools.FormatSizeText(FreeSpace); } set { } }
+        public String UsedSpaceText { get { return Tools.FormatSizeText(UsedSpace); } set { } }
         public int State { get; set; }
         public string UsingDeviceId { get { return "@" + PNPDeviceId; } set { } }
-        public string DisplayMember { get { return this.DriveLetter + " " + this.Model + " " + this.SizeGB; } set { } }
+        public string DisplayMember { get { return this.DriveLetter + " " + this.Model + " " + this.SizeText; } set { } }
         public DateTime CreateDateTime { get; set; }
         public DateTime UpdateDateTime { get; set; }
         public DateTime DeleteDateTime { get; set; }

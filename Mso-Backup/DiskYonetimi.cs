@@ -7,7 +7,7 @@ using NLog;
 
 namespace Mso_Backup
 {
-    class DiskYonetimi
+    public class DiskYonetimi
     {
         Komut _komut = new Komut();
         //String _DeviceID = "\"@USBSTOR\\DISK&VEN_TOSHIBA&PROD_TRANSMEMORY&REV_PMAP\\000AEBFFB4C1EB70E31D0037&0\"";

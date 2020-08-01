@@ -33,9 +33,9 @@
             this.lblDriveLetter = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblFreeSpace = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnOnline = new System.Windows.Forms.Button();
+            this.btnOffline = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -85,41 +85,43 @@
             this.lblFreeSpace.TabIndex = 4;
             this.lblFreeSpace.Text = "15 GB";
             // 
-            // button1
+            // btnOnline
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(54, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 18);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Online";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOnline.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnOnline.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.btnOnline.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOnline.Location = new System.Drawing.Point(54, 34);
+            this.btnOnline.Name = "btnOnline";
+            this.btnOnline.Size = new System.Drawing.Size(67, 18);
+            this.btnOnline.TabIndex = 5;
+            this.btnOnline.Text = "Online";
+            this.btnOnline.UseVisualStyleBackColor = true;
+            this.btnOnline.Click += new System.EventHandler(this.btnOnline_Click);
             // 
-            // button2
+            // btnOffline
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(127, 34);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 18);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Offline";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnOffline.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.btnOffline.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOffline.Location = new System.Drawing.Point(127, 34);
+            this.btnOffline.Name = "btnOffline";
+            this.btnOffline.Size = new System.Drawing.Size(67, 18);
+            this.btnOffline.TabIndex = 6;
+            this.btnOffline.Text = "Offline";
+            this.btnOffline.UseVisualStyleBackColor = true;
+            this.btnOffline.Click += new System.EventHandler(this.btnOffline_Click);
             // 
-            // button3
+            // btnRemove
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(269, 34);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 18);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRemove.Location = new System.Drawing.Point(269, 34);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(67, 18);
+            this.btnRemove.TabIndex = 7;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // lblName
             // 
@@ -134,9 +136,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnOffline);
+            this.Controls.Add(this.btnOnline);
             this.Controls.Add(this.lblFreeSpace);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDriveLetter);
@@ -157,9 +159,9 @@
         private System.Windows.Forms.Label lblDriveLetter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblFreeSpace;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnOnline;
+        private System.Windows.Forms.Button btnOffline;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label lblName;
     }
 }

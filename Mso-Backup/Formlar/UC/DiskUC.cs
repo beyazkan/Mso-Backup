@@ -13,28 +13,34 @@ namespace Mso_Backup.Formlar.UC
 {
     public partial class DiskUC : UserControl
     {
+        DiskYonetimi _diskYonetimi;
         Disk _disk;
-        int size;
-        int freesize;
-        int currentsize;
 
         public DiskUC()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
-        public DiskUC(Disk disk)
+        public DiskUC(DiskYonetimi diskYonetimi, Disk disk)
         {
             InitializeComponent();
+            _diskYonetimi = diskYonetimi;
             _disk = disk;
             lblDriveLetter.Text = disk.DriveLetter;
-            lblFreeSpace.Text = disk.FreeSpaceGB;
+            lblFreeSpace.Text = disk.FreeSpaceText;
             lblName.Text = disk.Model;
-            size = (int)(disk.Size / 100);
-            freesize = (int)(disk.FreeSpace / 100);
-            currentsize = size - freesize;
-            progressBar1.Maximum = size;
-            progressBar1.Value = currentsize;
+            progressBar1.Maximum = disk.SizeToInt;
+            progressBar1.Value = disk.UsedSpaceToInt;
+        }
+
+        private void btnOnline_Click(object sender, EventArgs e)
+        {
+            _diskYonetimi.Online(_disk.UsingDeviceId);
+        }
+
+        private void btnOffline_Click(object sender, EventArgs e)
+        {
+            _diskYonetimi.Offline(_disk.UsingDeviceId);
         }
     }
 }

@@ -6,11 +6,12 @@ namespace Mso_Backup.Formlar
 {
     public partial class DriversForm : Form
     {
-        DiskYonetimi _diskYonetimi = new DiskYonetimi();
+        DiskYonetimi _diskYonetimi;
 
-        public DriversForm()
+        public DriversForm(DiskYonetimi diskYonetimi)
         {
             InitializeComponent();
+            _diskYonetimi = diskYonetimi;
         }
 
         private void DepolamaCihazlariBtn_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace Mso_Backup.Formlar
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Disk disk = (Disk)checkedListBox1.SelectedItem;
-           lblFreeSpace.Text = disk.FreeSpaceGB;
+           lblFreeSpace.Text = disk.FreeSpaceText;
            lblSerialNumber.Text = disk.SerialNumber;
         }
 

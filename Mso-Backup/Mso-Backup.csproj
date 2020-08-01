@@ -260,6 +260,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shortcut.cs" />
+    <Compile Include="Tools.cs" />
     <Content Include="Exe\devcon.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -26,12 +26,12 @@ namespace Mso_Backup.Formlar
             _loadingForm.LoadingUpdate(5, "Program Yükleniyor.....");
             _logger = LogManager.GetCurrentClassLogger();
             _loadingForm.LoadingUpdate(7, "Loglama Nesnesi Yüklendi.");
-            _driverForms = new DriversForm();
-            _loadingForm.LoadingUpdate(10, "Sürücü Nesnesi Yüklendi.");
+            _diskYonetimi = new DiskYonetimi();
+            _loadingForm.LoadingUpdate(10, "Disk Nesnesi Yüklendi.");
             _settingsForm = new SettingsForm();
             _loadingForm.LoadingUpdate(20, "Ayarlar Penceresi Yüklendi.");
-            _diskYonetimi = new DiskYonetimi();
-            _loadingForm.LoadingUpdate(30, "Disk Nesnesi Yüklendi.");
+            _driverForms = new DriversForm(_diskYonetimi);
+            _loadingForm.LoadingUpdate(30, "Sürücü Nesnesi Yüklendi.");
             DiskListele();
             _loadingForm.LoadingUpdate(40, "Diskler Yüklendi");
             _loadingForm.LoadingUpdate(50, "Nesne 5 Yüklendi");
@@ -46,7 +46,7 @@ namespace Mso_Backup.Formlar
         {
             foreach (var disk in _diskYonetimi.disks)
             {
-                flDisks.Controls.Add(new DiskUC(disk));
+                flDisks.Controls.Add(new DiskUC(_diskYonetimi, disk));
             }
         }
 
