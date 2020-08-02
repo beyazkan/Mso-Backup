@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mso_Backup.Entity
 {
@@ -16,9 +12,9 @@ namespace Mso_Backup.Entity
         public long Size { get; set; }
         public long FreeSpace { get; set; }
         public long UsedSpace { get { return Size - FreeSpace; } set { } }
-        public int SizeToInt { get { return Tools.FormatSize(Size); } set { } }
-        public int FreeSpaceToInt { get { return Tools.FormatSize(FreeSpace); } set { } }
-        public int UsedSpaceToInt { get { return Tools.FormatSize(UsedSpace); } set { } }
+        public int SizeToInt { get { return Tools.FormatSizeToMB(Size); } set { } }
+        public int FreeSpaceToInt { get { return Tools.FormatSizeToMB(FreeSpace); } set { } }
+        public int UsedSpaceToInt { get { return Tools.FormatSizeToMB(UsedSpace); } set { } }
         public String SizeText { get { return Tools.FormatSizeText(Size);  } set { } }
         public String FreeSpaceText { get { return Tools.FormatSizeText(FreeSpace); } set { } }
         public String UsedSpaceText { get { return Tools.FormatSizeText(UsedSpace); } set { } }

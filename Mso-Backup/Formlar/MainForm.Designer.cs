@@ -48,14 +48,14 @@
             this.gösterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kapatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.flDisks = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressUC2 = new Mso_Backup.Formlar.UC.ProgressUC();
-            this.progressUC1 = new Mso_Backup.Formlar.UC.ProgressUC();
             this.taskUC2 = new Mso_Backup.Formlar.UC.TaskUC();
             this.taskUC1 = new Mso_Backup.Formlar.UC.TaskUC();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flDisks = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.progressUC2 = new Mso_Backup.Formlar.UC.ProgressUC();
+            this.progressUC1 = new Mso_Backup.Formlar.UC.ProgressUC();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -209,6 +209,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Görevler";
             // 
+            // taskUC2
+            // 
+            this.taskUC2.Location = new System.Drawing.Point(7, 82);
+            this.taskUC2.Name = "taskUC2";
+            this.taskUC2.Size = new System.Drawing.Size(385, 53);
+            this.taskUC2.TabIndex = 1;
+            // 
+            // taskUC1
+            // 
+            this.taskUC1.Location = new System.Drawing.Point(7, 20);
+            this.taskUC1.Name = "taskUC1";
+            this.taskUC1.Size = new System.Drawing.Size(385, 53);
+            this.taskUC1.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.flDisks);
@@ -218,6 +232,14 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dahili Diskler";
+            // 
+            // flDisks
+            // 
+            this.flDisks.AutoScroll = true;
+            this.flDisks.Location = new System.Drawing.Point(7, 20);
+            this.flDisks.Name = "flDisks";
+            this.flDisks.Size = new System.Drawing.Size(381, 122);
+            this.flDisks.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -229,22 +251,6 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "İşlemler";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 311);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(806, 114);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            // 
-            // flDisks
-            // 
-            this.flDisks.AutoScroll = true;
-            this.flDisks.Location = new System.Drawing.Point(7, 20);
-            this.flDisks.Name = "flDisks";
-            this.flDisks.Size = new System.Drawing.Size(381, 122);
-            this.flDisks.TabIndex = 0;
             // 
             // progressUC2
             // 
@@ -260,19 +266,13 @@
             this.progressUC1.Size = new System.Drawing.Size(786, 46);
             this.progressUC1.TabIndex = 0;
             // 
-            // taskUC2
+            // richTextBox1
             // 
-            this.taskUC2.Location = new System.Drawing.Point(7, 82);
-            this.taskUC2.Name = "taskUC2";
-            this.taskUC2.Size = new System.Drawing.Size(385, 53);
-            this.taskUC2.TabIndex = 1;
-            // 
-            // taskUC1
-            // 
-            this.taskUC1.Location = new System.Drawing.Point(7, 20);
-            this.taskUC1.Name = "taskUC1";
-            this.taskUC1.Size = new System.Drawing.Size(385, 53);
-            this.taskUC1.TabIndex = 0;
+            this.richTextBox1.Location = new System.Drawing.Point(13, 311);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(806, 114);
+            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // MainForm
             // 
@@ -291,6 +291,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsoBackup";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
